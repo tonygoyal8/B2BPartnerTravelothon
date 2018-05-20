@@ -1,0 +1,2861 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://hermes-it.in/API" elementFormDefault="qualified" targetNamespace="http://hermes-it.in/API" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="GetAvailability">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetAvailabilityRequest" nillable="true" type="tns:AvailabilityRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="AvailabilityRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Authentication" nillable="true" type="tns:Authentication" />
+      <xs:element minOccurs="0" name="AvailabilityInput" nillable="true" type="tns:AvailabilityInput" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AvailabilityRequest" nillable="true" type="tns:AvailabilityRequest" />
+  <xs:complexType name="Authentication">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="LoginId" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Authentication" nillable="true" type="tns:Authentication" />
+  <xs:complexType name="AvailabilityInput">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BookingType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="JourneyDetails" nillable="true" type="tns:ArrayOfTripDetails" />
+      <xs:element minOccurs="0" name="ClassType" nillable="true" type="xs:string" />
+      <xs:element name="AirlineCode" nillable="true" type="xs:string" />
+      <xs:element name="AdultCount" type="xs:int" />
+      <xs:element name="ChildCount" type="xs:int" />
+      <xs:element name="InfantCount" type="xs:int" />
+      <xs:element name="ResidentofIndia" type="xs:int" />
+      <xs:element name="Optional1" nillable="true" type="xs:string" />
+      <xs:element name="Optional2" nillable="true" type="xs:string" />
+      <xs:element name="Optional3" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PackageId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AvailabilityInput" nillable="true" type="tns:AvailabilityInput" />
+  <xs:complexType name="ArrayOfTripDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TripDetails" nillable="true" type="tns:TripDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTripDetails" nillable="true" type="tns:ArrayOfTripDetails" />
+  <xs:complexType name="TripDetails">
+    <xs:sequence>
+      <xs:element name="Origin" nillable="true" type="xs:string" />
+      <xs:element name="Destination" nillable="true" type="xs:string" />
+      <xs:element name="TravelDate" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TripDetails" nillable="true" type="tns:TripDetails" />
+  <xs:element name="GetAvailabilityResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetAvailabilityResult" nillable="true" type="tns:AvailabilityResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="AvailabilityResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ResponseStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="UserTrackId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AvailabilityOutput" nillable="true" type="tns:AvailabilityOutput">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="FailureRemarks" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AvailabilityResponse" nillable="true" type="tns:AvailabilityResponse" />
+  <xs:complexType name="AvailabilityOutput">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AvailableFlights" nillable="true" type="tns:AvailableFlights" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AvailabilityOutput" nillable="true" type="tns:AvailabilityOutput" />
+  <xs:complexType name="AvailableFlights">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="OngoingFlights" nillable="true" type="tns:ArrayOfAvailFlightSegments" />
+      <xs:element minOccurs="0" name="ReturnFlights" nillable="true" type="tns:ArrayOfAvailFlightSegments" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AvailableFlights" nillable="true" type="tns:AvailableFlights" />
+  <xs:complexType name="ArrayOfAvailFlightSegments">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AvailFlightSegments" nillable="true" type="tns:AvailFlightSegments" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAvailFlightSegments" nillable="true" type="tns:ArrayOfAvailFlightSegments" />
+  <xs:complexType name="AvailFlightSegments">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AvailSegments" nillable="true" type="tns:ArrayOfAvailSegmentDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AvailFlightSegments" nillable="true" type="tns:AvailFlightSegments" />
+  <xs:complexType name="ArrayOfAvailSegmentDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AvailSegmentDetails" nillable="true" type="tns:AvailSegmentDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAvailSegmentDetails" nillable="true" type="tns:ArrayOfAvailSegmentDetails" />
+  <xs:complexType name="AvailSegmentDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FlightId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AirlineCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FlightNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AirCraftType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Origin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OriginAirportTerminal" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Destination" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DestinationAirportTerminal" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DepartureDateTime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ArrivalDateTime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Duration" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NumberofStops" type="xs:int" />
+      <xs:element minOccurs="0" name="Via" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CurrencyCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Currency_Conversion_Rate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AvailPaxFareDetails" nillable="true" type="tns:ArrayOfPaxFareDetails" />
+      <xs:element minOccurs="0" name="SupplierId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AvailSegmentDetails" nillable="true" type="tns:AvailSegmentDetails" />
+  <xs:complexType name="ArrayOfPaxFareDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PaxFareDetails" nillable="true" type="tns:PaxFareDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPaxFareDetails" nillable="true" type="tns:ArrayOfPaxFareDetails" />
+  <xs:complexType name="PaxFareDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClassCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClassCodeDesc" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BaggageAllowed" nillable="true" type="tns:AvailBaggageDetails" />
+      <xs:element minOccurs="0" name="Adult" nillable="true" type="tns:Adult" />
+      <xs:element minOccurs="0" name="Child" nillable="true" type="tns:Child" />
+      <xs:element minOccurs="0" name="Infant" nillable="true" type="tns:Infant" />
+      <xs:element minOccurs="0" name="CancellationCharges" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ChangePenalty" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PaxFareDetails" nillable="true" type="tns:PaxFareDetails" />
+  <xs:complexType name="AvailBaggageDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CheckInBaggage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HandBaggage" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AvailBaggageDetails" nillable="true" type="tns:AvailBaggageDetails" />
+  <xs:complexType name="Adult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FareBasis" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FareType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BasicAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="YQ" type="xs:double" />
+      <xs:element minOccurs="0" name="TaxDetails" nillable="true" type="tns:ArrayOfAvailTaxItem" />
+      <xs:element minOccurs="0" name="TotalTaxAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="GrossAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="Commission" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Adult" nillable="true" type="tns:Adult" />
+  <xs:complexType name="ArrayOfAvailTaxItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AvailTaxItem" nillable="true" type="tns:AvailTaxItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAvailTaxItem" nillable="true" type="tns:ArrayOfAvailTaxItem" />
+  <xs:complexType name="AvailTaxItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Amount" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AvailTaxItem" nillable="true" type="tns:AvailTaxItem" />
+  <xs:complexType name="Child">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FareBasis" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FareType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BasicAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="YQ" type="xs:double" />
+      <xs:element minOccurs="0" name="TaxDetails" nillable="true" type="tns:ArrayOfAvailTaxItem" />
+      <xs:element minOccurs="0" name="TotalTaxAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="GrossAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="Commission" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Child" nillable="true" type="tns:Child" />
+  <xs:complexType name="Infant">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FareBasis" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FareType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BasicAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="YQ" type="xs:double" />
+      <xs:element minOccurs="0" name="TaxDetails" nillable="true" type="tns:ArrayOfAvailTaxItem" />
+      <xs:element minOccurs="0" name="TotalTaxAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="GrossAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="Commission" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Infant" nillable="true" type="tns:Infant" />
+  <xs:element name="GetTax">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetTaxRequest" nillable="true" type="tns:TaxRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="TaxRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Authentication" nillable="true" type="tns:Authentication" />
+      <xs:element minOccurs="0" name="UserTrackId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TaxInput" nillable="true" type="tns:TaxInput" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TaxRequest" nillable="true" type="tns:TaxRequest" />
+  <xs:complexType name="TaxInput">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="TaxReqFlightSegments" nillable="true" type="tns:ArrayOfTaxSegments" />
+      <xs:element minOccurs="0" name="GSTDetails" nillable="true" type="tns:GSTDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TaxInput" nillable="true" type="tns:TaxInput" />
+  <xs:complexType name="ArrayOfTaxSegments">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TaxSegments" nillable="true" type="tns:TaxSegments" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTaxSegments" nillable="true" type="tns:ArrayOfTaxSegments" />
+  <xs:complexType name="TaxSegments">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FlightId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClassCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AirlineCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ETicketFlag" type="xs:int" />
+      <xs:element minOccurs="0" name="BasicAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="FareBasis" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TaxSegments" nillable="true" type="tns:TaxSegments" />
+  <xs:complexType name="GSTDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="GSTNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EMailId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CompanyName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GSTDetails" nillable="true" type="tns:GSTDetails" />
+  <xs:element name="GetTaxResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetTaxResult" nillable="true" type="tns:TaxResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="TaxResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ResponseStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="UserTrackId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TaxOutput" nillable="true" type="tns:TaxOutput">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="FailureRemarks" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TaxResponse" nillable="true" type="tns:TaxResponse" />
+  <xs:complexType name="TaxOutput">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BaggageAndMealsFlag" type="xs:int" />
+      <xs:element minOccurs="0" name="TaxResFlightSegments" nillable="true" type="tns:ArrayOfTaxSegmentDetails" />
+      <xs:element minOccurs="0" name="RequiredFields" nillable="true" type="tns:BookingRequiredFields" />
+      <xs:element minOccurs="0" name="Baggages" nillable="true" type="tns:ArrayOfTaxBaggageItem" />
+      <xs:element minOccurs="0" name="Meals" nillable="true" type="tns:TaxMeals" />
+      <xs:element minOccurs="0" name="SpecialServices" nillable="true" type="tns:ArrayOfTaxSpecialServiceItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TaxOutput" nillable="true" type="tns:TaxOutput" />
+  <xs:complexType name="ArrayOfTaxSegmentDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TaxSegmentDetails" nillable="true" type="tns:TaxSegmentDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTaxSegmentDetails" nillable="true" type="tns:ArrayOfTaxSegmentDetails" />
+  <xs:complexType name="TaxSegmentDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FlightId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AdultTax" nillable="true" type="tns:TaxAdultFareDetails" />
+      <xs:element minOccurs="0" name="ChildTax" nillable="true" type="tns:TaxChildFareDetails" />
+      <xs:element minOccurs="0" name="InfantTax" nillable="true" type="tns:TaxInfantFareDetails" />
+      <xs:element minOccurs="0" name="Baggages" nillable="true" type="tns:ArrayOfTaxBaggages" />
+      <xs:element minOccurs="0" name="Meals" nillable="true" type="tns:ArrayOfTaxMealsItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TaxSegmentDetails" nillable="true" type="tns:TaxSegmentDetails" />
+  <xs:complexType name="TaxAdultFareDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FareBreakUpDetails" nillable="true" type="tns:TaxFareBreakUpDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TaxAdultFareDetails" nillable="true" type="tns:TaxAdultFareDetails" />
+  <xs:complexType name="TaxFareBreakUpDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BasicCurrencyCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CurrencyCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BasicAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="EquivalentFare" type="xs:double" />
+      <xs:element minOccurs="0" name="TaxDetails" nillable="true" type="tns:ArrayOfTaxItem" />
+      <xs:element minOccurs="0" name="TotalTaxAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="TransactionFee" type="xs:double" />
+      <xs:element minOccurs="0" name="ServiceCharge" type="xs:double" />
+      <xs:element minOccurs="0" name="GrossAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="Commission" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TaxFareBreakUpDetails" nillable="true" type="tns:TaxFareBreakUpDetails" />
+  <xs:complexType name="ArrayOfTaxItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TaxItem" nillable="true" type="tns:TaxItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTaxItem" nillable="true" type="tns:ArrayOfTaxItem" />
+  <xs:complexType name="TaxItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Amount" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TaxItem" nillable="true" type="tns:TaxItem" />
+  <xs:complexType name="TaxChildFareDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FareBreakUpDetails" nillable="true" type="tns:TaxFareBreakUpDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TaxChildFareDetails" nillable="true" type="tns:TaxChildFareDetails" />
+  <xs:complexType name="TaxInfantFareDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FareBreakUpDetails" nillable="true" type="tns:TaxFareBreakUpDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TaxInfantFareDetails" nillable="true" type="tns:TaxInfantFareDetails" />
+  <xs:complexType name="ArrayOfTaxBaggages">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TaxBaggages" nillable="true" type="tns:TaxBaggages" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTaxBaggages" nillable="true" type="tns:ArrayOfTaxBaggages" />
+  <xs:complexType name="TaxBaggages">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="OngoingBaggage" nillable="true" type="tns:ArrayOfTaxBaggageItem" />
+      <xs:element minOccurs="0" name="ReturnBaggage" nillable="true" type="tns:ArrayOfTaxBaggageItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TaxBaggages" nillable="true" type="tns:TaxBaggages" />
+  <xs:complexType name="ArrayOfTaxBaggageItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TaxBaggageItem" nillable="true" type="tns:TaxBaggageItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTaxBaggageItem" nillable="true" type="tns:ArrayOfTaxBaggageItem" />
+  <xs:complexType name="TaxBaggageItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BaggageCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BaggageDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BaggageAmount" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TaxBaggageItem" nillable="true" type="tns:TaxBaggageItem" />
+  <xs:complexType name="ArrayOfTaxMealsItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TaxMealsItem" nillable="true" type="tns:TaxMealsItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTaxMealsItem" nillable="true" type="tns:ArrayOfTaxMealsItem" />
+  <xs:complexType name="TaxMealsItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MealCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MealDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MealAmount" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TaxMealsItem" nillable="true" type="tns:TaxMealsItem" />
+  <xs:complexType name="BookingRequiredFields">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AdultReqFields" nillable="true" type="tns:AdultRequiredFields" />
+      <xs:element minOccurs="0" name="ChildReqFields" nillable="true" type="tns:ChildRequiredFields" />
+      <xs:element minOccurs="0" name="InfantReqFields" nillable="true" type="tns:InfantRequiredFields" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BookingRequiredFields" nillable="true" type="tns:BookingRequiredFields" />
+  <xs:complexType name="AdultRequiredFields">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Age" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdProof" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PassportNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Gender" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DateOfBirth" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PassportExpiryDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PassportIssuingCountry" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Nationality" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AdultRequiredFields" nillable="true" type="tns:AdultRequiredFields" />
+  <xs:complexType name="ChildRequiredFields">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Age" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdProof" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PassportNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Gender" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DateOfBirth" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PassportExpiryDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PassportIssuingCountry" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Nationality" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ChildRequiredFields" nillable="true" type="tns:ChildRequiredFields" />
+  <xs:complexType name="InfantRequiredFields">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Age" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdProof" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PassportNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Gender" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DateOfBirth" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PassportExpiryDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PassportIssuingCountry" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Nationality" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InfantRequiredFields" nillable="true" type="tns:InfantRequiredFields" />
+  <xs:complexType name="TaxMeals">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AdultMeals" nillable="true" type="tns:ArrayOfTaxMealsItem">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ChildMeals" nillable="true" type="tns:ArrayOfTaxMealsItem">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="FSCMeals" nillable="true" type="tns:ArrayOfTaxMealsItem">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TaxMeals" nillable="true" type="tns:TaxMeals" />
+  <xs:complexType name="ArrayOfTaxSpecialServiceItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TaxSpecialServiceItem" nillable="true" type="tns:TaxSpecialServiceItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTaxSpecialServiceItem" nillable="true" type="tns:ArrayOfTaxSpecialServiceItem" />
+  <xs:complexType name="TaxSpecialServiceItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SpecialServiceCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SpecialServiceDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SpecialServiceAmount" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TaxSpecialServiceItem" nillable="true" type="tns:TaxSpecialServiceItem" />
+  <xs:element name="GetBook">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetBookRequest" nillable="true" type="tns:BookingRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="BookingRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Authentication" nillable="true" type="tns:Authentication" />
+      <xs:element minOccurs="0" name="UserTrackId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BookInput" nillable="true" type="tns:BookInput" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BookingRequest" nillable="true" type="tns:BookingRequest" />
+  <xs:complexType name="BookInput">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CustomerDetails" nillable="true" type="tns:CustomerDetails" />
+      <xs:element minOccurs="0" name="SpecialRemarks" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NotifyByMail" type="xs:int" />
+      <xs:element minOccurs="0" name="NotifyBySMS" type="xs:int" />
+      <xs:element minOccurs="0" name="AdultCount" type="xs:int" />
+      <xs:element minOccurs="0" name="ChildCount" type="xs:int" />
+      <xs:element minOccurs="0" name="InfantCount" type="xs:int" />
+      <xs:element minOccurs="0" name="BookingType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TotalAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="FrequentFlyerRequest" nillable="true" type="tns:ArrayOfFrequentFlyerItem" />
+      <xs:element minOccurs="0" name="SpecialServiceRequest" nillable="true" type="tns:ArrayOfSpecialServiceItem" />
+      <xs:element minOccurs="0" name="FSCMealsRequest" nillable="true" type="tns:ArrayOfFSCMealsItem" />
+      <xs:element minOccurs="0" name="FlightBookingDetails" nillable="true" type="tns:ArrayOfBookingDetails" />
+      <xs:element minOccurs="0" name="BlockingFlag" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BookInput" nillable="true" type="tns:BookInput" />
+  <xs:complexType name="CustomerDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CountryId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EmailId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PinCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CustomerDetails" nillable="true" type="tns:CustomerDetails" />
+  <xs:complexType name="ArrayOfFrequentFlyerItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="FrequentFlyerItem" nillable="true" type="tns:FrequentFlyerItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFrequentFlyerItem" nillable="true" type="tns:ArrayOfFrequentFlyerItem" />
+  <xs:complexType name="FrequentFlyerItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="NamePosition" type="xs:int" />
+      <xs:element minOccurs="0" name="FrequentFlyerNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FlightNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AirlineCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DepartureDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClassCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Origin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Destination" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FrequentFlyerItem" nillable="true" type="tns:FrequentFlyerItem" />
+  <xs:complexType name="ArrayOfSpecialServiceItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SpecialServiceItem" nillable="true" type="tns:SpecialServiceItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSpecialServiceItem" nillable="true" type="tns:ArrayOfSpecialServiceItem" />
+  <xs:complexType name="SpecialServiceItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="NamePosition" type="xs:int" />
+      <xs:element minOccurs="0" name="SpecialServiceCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Amount" type="xs:double" />
+      <xs:element minOccurs="0" name="FlightNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AirlineCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DepartureDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClassCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Origin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Destination" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SpecialServiceItem" nillable="true" type="tns:SpecialServiceItem" />
+  <xs:complexType name="ArrayOfFSCMealsItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="FSCMealsItem" nillable="true" type="tns:FSCMealsItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFSCMealsItem" nillable="true" type="tns:ArrayOfFSCMealsItem" />
+  <xs:complexType name="FSCMealsItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="NamePosition" type="xs:int" />
+      <xs:element minOccurs="0" name="MealCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Amount" type="xs:double" />
+      <xs:element minOccurs="0" name="FlightNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AirlineCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DepartureDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClassCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Origin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Destination" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FSCMealsItem" nillable="true" type="tns:FSCMealsItem" />
+  <xs:complexType name="ArrayOfBookingDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BookingDetails" nillable="true" type="tns:BookingDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBookingDetails" nillable="true" type="tns:ArrayOfBookingDetails" />
+  <xs:complexType name="BookingDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AirlineCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PaymentDetails" nillable="true" type="tns:PaymentDetails" />
+      <xs:element minOccurs="0" name="TourCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PassengerDetails" nillable="true" type="tns:ArrayOfPaxItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BookingDetails" nillable="true" type="tns:BookingDetails" />
+  <xs:complexType name="PaymentDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CurrencyCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Amount" type="xs:double" />
+      <xs:element minOccurs="0" name="AirlinePaymentDetails" nillable="true" type="tns:AirlinePaymentDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PaymentDetails" nillable="true" type="tns:PaymentDetails" />
+  <xs:complexType name="AirlinePaymentDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="TicketingPCC" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PaymentType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VendorCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreditCardDetails" nillable="true" type="tns:CreditCardDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AirlinePaymentDetails" nillable="true" type="tns:AirlinePaymentDetails" />
+  <xs:complexType name="CreditCardDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CardNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CardType" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CreditCardDetails" nillable="true" type="tns:CreditCardDetails" />
+  <xs:complexType name="ArrayOfPaxItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PaxItem" nillable="true" type="tns:PaxItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPaxItem" nillable="true" type="tns:ArrayOfPaxItem" />
+  <xs:complexType name="PaxItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PassengerType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Gender" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Age" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DateofBirth" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdentityProofId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdentityProofNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BookingSegments" nillable="true" type="tns:ArrayOfBookingSegmentDetails" />
+      <xs:element minOccurs="0" name="LCCBaggageRequest" nillable="true" type="tns:ArrayOfLCCBaggageItem" />
+      <xs:element minOccurs="0" name="LCCMealsRequest" nillable="true" type="tns:ArrayOfLCCMealsItem" />
+      <xs:element minOccurs="0" name="OtherSSRRequest" nillable="true" type="tns:ArrayOfOtherSSRItem" />
+      <xs:element minOccurs="0" name="SeatRequest" nillable="true" type="tns:ArrayOfSeatItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PaxItem" nillable="true" type="tns:PaxItem" />
+  <xs:complexType name="ArrayOfBookingSegmentDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BookingSegmentDetails" nillable="true" type="tns:BookingSegmentDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBookingSegmentDetails" nillable="true" type="tns:ArrayOfBookingSegmentDetails" />
+  <xs:complexType name="BookingSegmentDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FlightId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClassCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SpecialServiceCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FrequentFlyerId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FrequentFlyerNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MealCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SeatPreferId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FareBasis" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BookingSegmentDetails" nillable="true" type="tns:BookingSegmentDetails" />
+  <xs:complexType name="ArrayOfLCCBaggageItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LCCBaggageItem" nillable="true" type="tns:LCCBaggageItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLCCBaggageItem" nillable="true" type="tns:ArrayOfLCCBaggageItem" />
+  <xs:complexType name="LCCBaggageItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FlightId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BaggageCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BaggageDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BaggageAmount" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LCCBaggageItem" nillable="true" type="tns:LCCBaggageItem" />
+  <xs:complexType name="ArrayOfLCCMealsItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LCCMealsItem" nillable="true" type="tns:LCCMealsItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLCCMealsItem" nillable="true" type="tns:ArrayOfLCCMealsItem" />
+  <xs:complexType name="LCCMealsItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FlightId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MealsCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MealsDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MealsAmount" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LCCMealsItem" nillable="true" type="tns:LCCMealsItem" />
+  <xs:complexType name="ArrayOfOtherSSRItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OtherSSRItem" nillable="true" type="tns:OtherSSRItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOtherSSRItem" nillable="true" type="tns:ArrayOfOtherSSRItem" />
+  <xs:complexType name="OtherSSRItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SelectedSSR" nillable="true" type="tns:ArrayOfSSRDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OtherSSRItem" nillable="true" type="tns:OtherSSRItem" />
+  <xs:complexType name="ArrayOfSSRDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SSRDetails" nillable="true" type="tns:SSRDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSSRDetails" nillable="true" type="tns:ArrayOfSSRDetails" />
+  <xs:complexType name="SSRDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SSRName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SSRCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SSRDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SSRAmount" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SSRDetails" nillable="true" type="tns:SSRDetails" />
+  <xs:complexType name="ArrayOfSeatItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SeatItem" nillable="true" type="tns:SeatItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSeatItem" nillable="true" type="tns:ArrayOfSeatItem" />
+  <xs:complexType name="SeatItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FlightNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AirlineCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Origin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Destination" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SeatCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SeatNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SeatAmount" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SeatItem" nillable="true" type="tns:SeatItem" />
+  <xs:element name="GetBookResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetBookResult" nillable="true" type="tns:BookingResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="BookingResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ResponseStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="UserTrackId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BookOutput" nillable="true" type="tns:BookOutput">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="FailureRemarks" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BookingResponse" nillable="true" type="tns:BookingResponse" />
+  <xs:complexType name="BookOutput">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FlightTicketDetails" nillable="true" type="tns:ArrayOfTicketDetails" />
+      <xs:element minOccurs="0" name="BlockingDetails" nillable="true" type="tns:ArrayOfBlockedTicketDetails" />
+      <xs:element minOccurs="0" name="GSTDetails" nillable="true" type="tns:GSTDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BookOutput" nillable="true" type="tns:BookOutput" />
+  <xs:complexType name="ArrayOfTicketDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TicketDetails" nillable="true" type="tns:TicketDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTicketDetails" nillable="true" type="tns:ArrayOfTicketDetails" />
+  <xs:complexType name="TicketDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="HermesPNR" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TransactionId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CustomerDetails" nillable="true" type="tns:CustomerDetails" />
+      <xs:element minOccurs="0" name="AirlineDetails" nillable="true" type="tns:ArrayOfAirlineItem" />
+      <xs:element minOccurs="0" name="IATADetails" nillable="true" type="tns:IATADetails" />
+      <xs:element minOccurs="0" name="TotalSegments" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="OtherCharges" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AdultCount" type="xs:int" />
+      <xs:element minOccurs="0" name="ChildCount" type="xs:int" />
+      <xs:element minOccurs="0" name="InfantCount" type="xs:int" />
+      <xs:element minOccurs="0" name="BookingType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TravelType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IssueDateTime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BaseOrigin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BaseDestination" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TourCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PaymentDetails" nillable="true" type="tns:PaymentDetails" />
+      <xs:element minOccurs="0" name="TerminalContactDetails" nillable="true" type="tns:TerminalContactDetails" />
+      <xs:element minOccurs="0" name="PassengerDetails" nillable="true" type="tns:ArrayOfPassengerItem" />
+      <xs:element minOccurs="0" name="BookingRemarks" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TicketDetails" nillable="true" type="tns:TicketDetails" />
+  <xs:complexType name="ArrayOfAirlineItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AirlineItem" nillable="true" type="tns:AirlineItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAirlineItem" nillable="true" type="tns:ArrayOfAirlineItem" />
+  <xs:complexType name="AirlineItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AirlineCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AirlinePNR" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AirlineName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Address1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Address2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FaxNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EMailId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AirlineItem" nillable="true" type="tns:AirlineItem" />
+  <xs:complexType name="IATADetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CRSPNR" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IATAAgentNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IATAAgentName1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IATAAgentName2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TicketNumber" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="IATADetails" nillable="true" type="tns:IATADetails" />
+  <xs:complexType name="TerminalContactDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="TerminalName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Address1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Address2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="State" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EmailId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TerminalContactDetails" nillable="true" type="tns:TerminalContactDetails" />
+  <xs:complexType name="ArrayOfPassengerItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PassengerItem" nillable="true" type="tns:PassengerItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPassengerItem" nillable="true" type="tns:ArrayOfPassengerItem" />
+  <xs:complexType name="PassengerItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="TicketNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TransmissionControlNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PassengerType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Age" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdentityProofId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdentityProofNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PersonOrgId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LadderDetails" nillable="true" type="tns:LadderDetails" />
+      <xs:element minOccurs="0" name="BookedSegments" nillable="true" type="tns:ArrayOfBookedSegmentDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PassengerItem" nillable="true" type="tns:PassengerItem" />
+  <xs:complexType name="LadderDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EndorsementRestriction" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IssueInExchangeFor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FareCalculation" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LadderDetails" nillable="true" type="tns:LadderDetails" />
+  <xs:complexType name="ArrayOfBookedSegmentDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BookedSegmentDetails" nillable="true" type="tns:BookedSegmentDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBookedSegmentDetails" nillable="true" type="tns:ArrayOfBookedSegmentDetails" />
+  <xs:complexType name="BookedSegmentDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="TicketNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FlightNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AirCraftType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Origin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OriginAirport" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DepartureDateTime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Destination" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DestinationAirport" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Arrivaldatetime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AirlineCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClassCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClassCodeDesc" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FareBasis" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BaggageAllowed" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StopOverAllowed" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FrequentFlyerId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FrequentFlyerNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SpecialServiceCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MealCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SeatPreferId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BasicCurrencyCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CurrencyCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BasicAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="EquivalentFare" type="xs:double" />
+      <xs:element minOccurs="0" name="TaxDetails" nillable="true" type="tns:ArrayOfTaxItem" />
+      <xs:element minOccurs="0" name="TotalTaxAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="TransactionFee" type="xs:double" />
+      <xs:element minOccurs="0" name="ServiceCharge" type="xs:double" />
+      <xs:element minOccurs="0" name="GrossAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="AdditionalSSRDetails" nillable="true" type="tns:ArrayOfAdditionalSSRItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BookedSegmentDetails" nillable="true" type="tns:BookedSegmentDetails" />
+  <xs:complexType name="ArrayOfAdditionalSSRItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AdditionalSSRItem" nillable="true" type="tns:AdditionalSSRItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAdditionalSSRItem" nillable="true" type="tns:ArrayOfAdditionalSSRItem" />
+  <xs:complexType name="AdditionalSSRItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="TicketNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SSRName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SSRDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SSRAmount" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AdditionalSSRItem" nillable="true" type="tns:AdditionalSSRItem" />
+  <xs:complexType name="ArrayOfBlockedTicketDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BlockedTicketDetails" nillable="true" type="tns:BlockedTicketDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBlockedTicketDetails" nillable="true" type="tns:ArrayOfBlockedTicketDetails" />
+  <xs:complexType name="BlockedTicketDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BlockedPNR" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BlockedRemarks" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AirlinePNR" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CRSPNR" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BlockedTicketDetails" nillable="true" type="tns:BlockedTicketDetails" />
+  <xs:element name="GetTransactionStatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetTransactionStatusRequest" nillable="true" type="tns:TransactionStatusRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="TransactionStatusRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Authentication" nillable="true" type="tns:Authentication" />
+      <xs:element name="UserTrackId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TransactionStatusRequest" nillable="true" type="tns:TransactionStatusRequest" />
+  <xs:element name="GetTransactionStatusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetTransactionStatusResult" nillable="true" type="tns:TransactionStatusResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="TransactionStatusResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ResponseStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="UserTrackId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TransactionStatusOutput" nillable="true" type="tns:TransactionStatusOutput">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="FailureRemarks" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TransactionStatusResponse" nillable="true" type="tns:TransactionStatusResponse" />
+  <xs:complexType name="TransactionStatusOutput">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="TransactionStatus" nillable="true" type="tns:TransactionStatus" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TransactionStatusOutput" nillable="true" type="tns:TransactionStatusOutput" />
+  <xs:complexType name="TransactionStatus">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Status" type="xs:int" />
+      <xs:element minOccurs="0" name="FlightTicketDetails" nillable="true" type="tns:ArrayOfTicketDetails">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Remarks" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GSTDetails" nillable="true" type="tns:GSTDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TransactionStatus" nillable="true" type="tns:TransactionStatus" />
+  <xs:element name="GetCancellation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetCancellationRequest" nillable="true" type="tns:CancellationRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="CancellationRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Authentication" nillable="true" type="tns:Authentication" />
+      <xs:element minOccurs="0" name="CancellationInput" nillable="true" type="tns:CancellationInput" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CancellationRequest" nillable="true" type="tns:CancellationRequest" />
+  <xs:complexType name="CancellationInput">
+    <xs:sequence>
+      <xs:element name="HermesPNR" nillable="true" type="xs:string" />
+      <xs:element name="AirlinePNR" nillable="true" type="xs:string" />
+      <xs:element name="CancelType" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CancellationInput" nillable="true" type="tns:CancellationInput" />
+  <xs:element name="GetCancellationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetCancellationResult" nillable="true" type="tns:CancellationResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="CancellationResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ResponseStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="CancellationOutput" nillable="true" type="tns:CancellationOutput">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="FailureRemarks" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CancellationResponse" nillable="true" type="tns:CancellationResponse" />
+  <xs:complexType name="CancellationOutput">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CancellationDetails" nillable="true" type="tns:CancellationDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CancellationOutput" nillable="true" type="tns:CancellationOutput" />
+  <xs:complexType name="CancellationDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FullCancellationRemarks" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="PartialCancelPNRDetails" nillable="true" type="tns:PartialCancelPNRDetails">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CancellationDetails" nillable="true" type="tns:CancellationDetails" />
+  <xs:complexType name="PartialCancelPNRDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AirlineCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HermesPNR" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AilinePNR" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CRSPNR" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CancelPassengerDetails" nillable="true" type="tns:ArrayOfCancelPaxItem" />
+      <xs:element minOccurs="0" name="SupplierId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PartialCancelPNRDetails" nillable="true" type="tns:PartialCancelPNRDetails" />
+  <xs:complexType name="ArrayOfCancelPaxItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CancelPaxItem" nillable="true" type="tns:CancelPaxItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCancelPaxItem" nillable="true" type="tns:ArrayOfCancelPaxItem" />
+  <xs:complexType name="CancelPaxItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PaxNumber" type="xs:int" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PassengerType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CancelTicketDetails" nillable="true" type="tns:ArrayOfCancelTicketItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CancelPaxItem" nillable="true" type="tns:CancelPaxItem" />
+  <xs:complexType name="ArrayOfCancelTicketItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CancelTicketItem" nillable="true" type="tns:CancelTicketItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCancelTicketItem" nillable="true" type="tns:ArrayOfCancelTicketItem" />
+  <xs:complexType name="CancelTicketItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="TicketNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SegmentId" type="xs:int" />
+      <xs:element minOccurs="0" name="FlightNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Origin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DepartureDateTime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Destination" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ArrivalDateTime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClassCodeDesc" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BasicAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="TotalTaxAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="GrossAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="TicketStatus" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CancelTicketItem" nillable="true" type="tns:CancelTicketItem" />
+  <xs:element name="GetPartialCancellation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetPartialCancellationRequest" nillable="true" type="tns:PartialCancellationRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="PartialCancellationRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Authentication" nillable="true" type="tns:Authentication" />
+      <xs:element minOccurs="0" name="PartialCancellationInput" nillable="true" type="tns:PartialCancellationInput" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PartialCancellationRequest" nillable="true" type="tns:PartialCancellationRequest" />
+  <xs:complexType name="PartialCancellationInput">
+    <xs:sequence>
+      <xs:element name="HermesPNR" nillable="true" type="xs:string" />
+      <xs:element name="AirlinePNR" nillable="true" type="xs:string" />
+      <xs:element name="CRSPNR" nillable="true" type="xs:string" />
+      <xs:element name="PartialCancelPassengerDetails" nillable="true" type="tns:ArrayOfPartialCancelPaxItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PartialCancellationInput" nillable="true" type="tns:PartialCancellationInput" />
+  <xs:complexType name="ArrayOfPartialCancelPaxItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PartialCancelPaxItem" nillable="true" type="tns:PartialCancelPaxItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPartialCancelPaxItem" nillable="true" type="tns:ArrayOfPartialCancelPaxItem" />
+  <xs:complexType name="PartialCancelPaxItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PaxNumber" type="xs:int" />
+      <xs:element minOccurs="0" name="PartialCancelTicketDetails" nillable="true" type="tns:ArrayOfPartialCancelTicketItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PartialCancelPaxItem" nillable="true" type="tns:PartialCancelPaxItem" />
+  <xs:complexType name="ArrayOfPartialCancelTicketItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PartialCancelTicketItem" nillable="true" type="tns:PartialCancelTicketItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPartialCancelTicketItem" nillable="true" type="tns:ArrayOfPartialCancelTicketItem" />
+  <xs:complexType name="PartialCancelTicketItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="TicketNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SegmentId" type="xs:int" />
+      <xs:element minOccurs="0" name="FlightNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Origin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Destination" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PartialCancelTicketItem" nillable="true" type="tns:PartialCancelTicketItem" />
+  <xs:element name="GetPartialCancellationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetPartialCancellationResult" nillable="true" type="tns:PartialCancellationResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="PartialCancellationResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ResponseStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="PartialCancellationOutput" nillable="true" type="tns:PartialCancellationOutput">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="FailureRemarks" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PartialCancellationResponse" nillable="true" type="tns:PartialCancellationResponse" />
+  <xs:complexType name="PartialCancellationOutput">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PartialCancellationDetails" nillable="true" type="tns:PartialCancellationDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PartialCancellationOutput" nillable="true" type="tns:PartialCancellationOutput" />
+  <xs:complexType name="PartialCancellationDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PartialCancellationRemarks" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PartialCancellationDetails" nillable="true" type="tns:PartialCancellationDetails" />
+  <xs:element name="GetBookedHistory">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetBookedHistoryRequest" nillable="true" type="tns:BookedHistoryRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="BookedHistoryRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Authentication" nillable="true" type="tns:Authentication" />
+      <xs:element minOccurs="0" name="BookedHistoryInput" nillable="true" type="tns:BookedHistoryInput" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BookedHistoryRequest" nillable="true" type="tns:BookedHistoryRequest" />
+  <xs:complexType name="BookedHistoryInput">
+    <xs:sequence>
+      <xs:element name="FromDate" nillable="true" type="xs:string" />
+      <xs:element name="ToDate" nillable="true" type="xs:string" />
+      <xs:element name="TravelType" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BookedHistoryInput" nillable="true" type="tns:BookedHistoryInput" />
+  <xs:element name="GetBookedHistoryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetBookedHistoryResult" nillable="true" type="tns:BookedHistoryResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="BookedHistoryResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ResponseStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="BookedHistoryOutput" nillable="true" type="tns:BookedHistoryOutput">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="FailureRemarks" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BookedHistoryResponse" nillable="true" type="tns:BookedHistoryResponse" />
+  <xs:complexType name="BookedHistoryOutput">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BookedPNRs" nillable="true" type="tns:ArrayOfPNRDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BookedHistoryOutput" nillable="true" type="tns:BookedHistoryOutput" />
+  <xs:complexType name="ArrayOfPNRDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PNRDetails" nillable="true" type="tns:PNRDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPNRDetails" nillable="true" type="tns:ArrayOfPNRDetails" />
+  <xs:complexType name="PNRDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="HermesPNR" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AirlineName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AirlinePNR" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BookingType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TotalSegments" type="xs:int" />
+      <xs:element minOccurs="0" name="Origin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Destination" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BookedDateTime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GrossAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="PNRStatus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BookedTerminal" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PNRDetails" nillable="true" type="tns:PNRDetails" />
+  <xs:element name="GetFareRule">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetFareRuleRequest" nillable="true" type="tns:FareRuleRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="FareRuleRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Authentication" nillable="true" type="tns:Authentication" />
+      <xs:element minOccurs="0" name="UserTrackId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FareRuleInput" nillable="true" type="tns:FareRuleInput" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FareRuleRequest" nillable="true" type="tns:FareRuleRequest" />
+  <xs:complexType name="FareRuleInput">
+    <xs:sequence>
+      <xs:element name="AirlineCode" nillable="true" type="xs:string" />
+      <xs:element name="FlightId" nillable="true" type="xs:string" />
+      <xs:element name="ClassCode" nillable="true" type="xs:string" />
+      <xs:element name="SupplierId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FareRuleInput" nillable="true" type="tns:FareRuleInput" />
+  <xs:element name="GetFareRuleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetFareRuleResult" nillable="true" type="tns:FareRuleResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="FareRuleResponse">
+    <xs:sequence>
+      <xs:element name="ResponseStatus" type="xs:int" />
+      <xs:element name="UserTrackId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FareRuleOutput" nillable="true" type="tns:FareRuleOutput">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="FailureRemarks" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FareRuleResponse" nillable="true" type="tns:FareRuleResponse" />
+  <xs:complexType name="FareRuleOutput">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FareRules" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FareRuleOutput" nillable="true" type="tns:FareRuleOutput" />
+  <xs:element name="GetReprint">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetReprintRequest" nillable="true" type="tns:ReprintRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ReprintRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Authentication" nillable="true" type="tns:Authentication" />
+      <xs:element minOccurs="0" name="ReprintInput" nillable="true" type="tns:ReprintInput" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReprintRequest" nillable="true" type="tns:ReprintRequest" />
+  <xs:complexType name="ReprintInput">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="HermesPNR" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReprintInput" nillable="true" type="tns:ReprintInput" />
+  <xs:element name="GetReprintResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetReprintResult" nillable="true" type="tns:ReprintResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ReprintResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ResponseStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="UserTrackId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReprintOutput" nillable="true" type="tns:ReprintOutput">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="FailureRemarks" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReprintResponse" nillable="true" type="tns:ReprintResponse" />
+  <xs:complexType name="ReprintOutput">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="TicketDetails" nillable="true" type="tns:ReprintTicketDetails" />
+      <xs:element minOccurs="0" name="GSTDetails" nillable="true" type="tns:GSTDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReprintOutput" nillable="true" type="tns:ReprintOutput" />
+  <xs:complexType name="ReprintTicketDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="HermesPNR" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TransactionId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CustomerDetails" nillable="true" type="tns:CustomerDetails" />
+      <xs:element minOccurs="0" name="AirlineDetails" nillable="true" type="tns:ArrayOfAirlineItem" />
+      <xs:element minOccurs="0" name="IATADetails" nillable="true" type="tns:IATADetails" />
+      <xs:element minOccurs="0" name="TotalSegments" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="OtherCharges" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AdultCount" type="xs:int" />
+      <xs:element minOccurs="0" name="ChildCount" type="xs:int" />
+      <xs:element minOccurs="0" name="InfantCount" type="xs:int" />
+      <xs:element minOccurs="0" name="BookingType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TravelType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IssueDateTime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BaseOrigin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BaseDestination" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TourCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PaymentDetails" nillable="true" type="tns:PaymentDetails" />
+      <xs:element minOccurs="0" name="TerminalContactDetails" nillable="true" type="tns:TerminalContactDetails" />
+      <xs:element minOccurs="0" name="PassengerDetails" nillable="true" type="tns:ArrayOfPassengerItem" />
+      <xs:element minOccurs="0" name="BookingRemarks" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReprintTicketDetails" nillable="true" type="tns:ReprintTicketDetails" />
+  <xs:element name="GetAgentCreditBalance">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetAgentCreditBalanceRequest" nillable="true" type="tns:AgentCreditBalanceRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="AgentCreditBalanceRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Authentication" nillable="true" type="tns:Authentication" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AgentCreditBalanceRequest" nillable="true" type="tns:AgentCreditBalanceRequest" />
+  <xs:element name="GetAgentCreditBalanceResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetAgentCreditBalanceResult" nillable="true" type="tns:AgentCreditBalanceResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="AgentCreditBalanceResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ResponseStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="AgentCreditBalanceOutput" nillable="true" type="tns:AgentCreditBalanceOutput">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="FailureRemarks" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AgentCreditBalanceResponse" nillable="true" type="tns:AgentCreditBalanceResponse" />
+  <xs:complexType name="AgentCreditBalanceOutput">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="RemainingAmount" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AgentCreditBalanceOutput" nillable="true" type="tns:AgentCreditBalanceOutput" />
+  <xs:element name="GetAccountStatement">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetAccountStatementRequest" nillable="true" type="tns:AccountStatementRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="AccountStatementRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Authentication" nillable="true" type="tns:Authentication" />
+      <xs:element minOccurs="0" name="AccountStatementInput" nillable="true" type="tns:AccountStatementInput" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AccountStatementRequest" nillable="true" type="tns:AccountStatementRequest" />
+  <xs:complexType name="AccountStatementInput">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FromDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ToDate" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AccountStatementInput" nillable="true" type="tns:AccountStatementInput" />
+  <xs:element name="GetAccountStatementResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetAccountStatementResult" nillable="true" type="tns:AccountStatementResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="AccountStatementResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ResponseStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="AccountStatementOutput" nillable="true" type="tns:AccountStatementOutput">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="FailureRemarks" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AccountStatementResponse" nillable="true" type="tns:AccountStatementResponse" />
+  <xs:complexType name="AccountStatementOutput">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="TravelAgentId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TravelAgentName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TotalRemainingAmount" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Transactions" nillable="true" type="tns:ArrayOfTransactionDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AccountStatementOutput" nillable="true" type="tns:AccountStatementOutput" />
+  <xs:complexType name="ArrayOfTransactionDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TransactionDetails" nillable="true" type="tns:TransactionDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTransactionDetails" nillable="true" type="tns:ArrayOfTransactionDetails" />
+  <xs:complexType name="TransactionDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DateTime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TransactionId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreditAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="DebitAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="RemainingAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="Remarks" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TerminalName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProductDescription" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TransactionDetails" nillable="true" type="tns:TransactionDetails" />
+  <xs:element name="GetCancellationDetails">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetCancellationDetailsRequest" nillable="true" type="tns:CancellationDetailsRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="CancellationDetailsRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Authentication" nillable="true" type="tns:Authentication" />
+      <xs:element minOccurs="0" name="CancellationDetailsInput" nillable="true" type="tns:CancellationDetailsInput" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CancellationDetailsRequest" nillable="true" type="tns:CancellationDetailsRequest" />
+  <xs:complexType name="CancellationDetailsInput">
+    <xs:sequence>
+      <xs:element name="HermesPNR" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CancellationDetailsInput" nillable="true" type="tns:CancellationDetailsInput" />
+  <xs:element name="GetCancellationDetailsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetCancellationDetailsResult" nillable="true" type="tns:CancellationDetailsResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="CancellationDetailsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ResponseStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="CancellationDetailsOutput" nillable="true" type="tns:CancellationDetailsOutput">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="FailureRemarks" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CancellationDetailsResponse" nillable="true" type="tns:CancellationDetailsResponse" />
+  <xs:complexType name="CancellationDetailsOutput">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CancelledTickets" nillable="true" type="tns:ArrayOfCancelledTicketDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CancellationDetailsOutput" nillable="true" type="tns:CancellationDetailsOutput" />
+  <xs:complexType name="ArrayOfCancelledTicketDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CancelledTicketDetails" nillable="true" type="tns:CancelledTicketDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCancelledTicketDetails" nillable="true" type="tns:ArrayOfCancelledTicketDetails" />
+  <xs:complexType name="CancelledTicketDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="HermesPNR" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AirlinePNR" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TicketNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Origin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Destination" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TicketCost" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Penalty" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CancelledDateTime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SplitPNR" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TaxSplitUpDetails" nillable="true" type="tns:ArrayOfTaxItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CancelledTicketDetails" nillable="true" type="tns:CancelledTicketDetails" />
+  <xs:element name="GetSSRAfterBooking">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetSSRAfterBookingRequest" nillable="true" type="tns:SSRAfterBookingRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="SSRAfterBookingRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Authentication" nillable="true" type="tns:Authentication" />
+      <xs:element minOccurs="0" name="SSRAfterBookingInput" nillable="true" type="tns:SSRAfterBookingInput" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SSRAfterBookingRequest" nillable="true" type="tns:SSRAfterBookingRequest" />
+  <xs:complexType name="SSRAfterBookingInput">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="HermesPNR" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SSRAfterBookingInput" nillable="true" type="tns:SSRAfterBookingInput" />
+  <xs:element name="GetSSRAfterBookingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetSSRAfterBookingResult" nillable="true" type="tns:SSRAfterBookingResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="SSRAfterBookingResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ResponseStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="UserTrackId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SSRAfterBookingOutput" nillable="true" type="tns:SSRAfterBookingOutput" />
+      <xs:element minOccurs="0" name="FailureRemarks" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SSRAfterBookingResponse" nillable="true" type="tns:SSRAfterBookingResponse" />
+  <xs:complexType name="SSRAfterBookingOutput">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="HermesPNR" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AirlineName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SeatMapFlag" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SSRABResFlightSegments" nillable="true" type="tns:SSRABResFlightSegments" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SSRAfterBookingOutput" nillable="true" type="tns:SSRAfterBookingOutput" />
+  <xs:complexType name="SSRABResFlightSegments">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="OngoingSegments" nillable="true" type="tns:SSRABResSegments" />
+      <xs:element minOccurs="0" name="ReturnSegments" nillable="true" type="tns:SSRABResSegments" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SSRABResFlightSegments" nillable="true" type="tns:SSRABResFlightSegments" />
+  <xs:complexType name="SSRABResSegments">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SSRABResSegments" nillable="true" type="tns:ArrayOfSSRABResSegmentDetails" />
+      <xs:element minOccurs="0" name="SegmentwiseSSRFlag" nillable="true" type="tns:ArrayOfSegmentwiseSSRItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SSRABResSegments" nillable="true" type="tns:SSRABResSegments" />
+  <xs:complexType name="ArrayOfSSRABResSegmentDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SSRABResSegmentDetails" nillable="true" type="tns:SSRABResSegmentDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSSRABResSegmentDetails" nillable="true" type="tns:ArrayOfSSRABResSegmentDetails" />
+  <xs:complexType name="SSRABResSegmentDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FlightNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Origin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Destination" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DepartureDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PassengerDetails" nillable="true" type="tns:ArrayOfSSRPaxItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SSRABResSegmentDetails" nillable="true" type="tns:SSRABResSegmentDetails" />
+  <xs:complexType name="ArrayOfSSRPaxItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SSRPaxItem" nillable="true" type="tns:SSRPaxItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSSRPaxItem" nillable="true" type="tns:ArrayOfSSRPaxItem" />
+  <xs:complexType name="SSRPaxItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PaxType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AvailableSSR" nillable="true" type="tns:ArrayOfSSRTypes" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SSRPaxItem" nillable="true" type="tns:SSRPaxItem" />
+  <xs:complexType name="ArrayOfSSRTypes">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SSRTypes" nillable="true" type="tns:SSRTypes" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSSRTypes" nillable="true" type="tns:ArrayOfSSRTypes" />
+  <xs:complexType name="SSRTypes">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SSRName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AlreadySelected" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="SSRDetails" nillable="true" type="tns:ArrayOfSSRItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SSRTypes" nillable="true" type="tns:SSRTypes" />
+  <xs:complexType name="ArrayOfSSRItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SSRItem" nillable="true" type="tns:SSRItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSSRItem" nillable="true" type="tns:ArrayOfSSRItem" />
+  <xs:complexType name="SSRItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SSRCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SSRDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SSRAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="PaxType" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SSRItem" nillable="true" type="tns:SSRItem" />
+  <xs:complexType name="ArrayOfSegmentwiseSSRItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SegmentwiseSSRItem" nillable="true" type="tns:SegmentwiseSSRItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSegmentwiseSSRItem" nillable="true" type="tns:ArrayOfSegmentwiseSSRItem" />
+  <xs:complexType name="SegmentwiseSSRItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SSRName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SegmentwiseFlag" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SegmentwiseSSRItem" nillable="true" type="tns:SegmentwiseSSRItem" />
+  <xs:element name="GetBookSSRAfterBooking">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetBookSSRAfterBookingRequest" nillable="true" type="tns:BookSSRAfterBookingRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="BookSSRAfterBookingRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Authentication" nillable="true" type="tns:Authentication" />
+      <xs:element minOccurs="0" name="UserTrackId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BookSSRAfterBookingInput" nillable="true" type="tns:BookSSRAfterBookingInput" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BookSSRAfterBookingRequest" nillable="true" type="tns:BookSSRAfterBookingRequest" />
+  <xs:complexType name="BookSSRAfterBookingInput">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="HermesPNR" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GrossFare" type="xs:double" />
+      <xs:element minOccurs="0" name="SSRFlightSegments" nillable="true" type="tns:SSRFlightSegments" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BookSSRAfterBookingInput" nillable="true" type="tns:BookSSRAfterBookingInput" />
+  <xs:complexType name="SSRFlightSegments">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="OngoingSegments" nillable="true" type="tns:ArrayOfSSRSegmentDetails" />
+      <xs:element minOccurs="0" name="ReturnSegments" nillable="true" type="tns:ArrayOfSSRSegmentDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SSRFlightSegments" nillable="true" type="tns:SSRFlightSegments" />
+  <xs:complexType name="ArrayOfSSRSegmentDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SSRSegmentDetails" nillable="true" type="tns:SSRSegmentDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSSRSegmentDetails" nillable="true" type="tns:ArrayOfSSRSegmentDetails" />
+  <xs:complexType name="SSRSegmentDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FlightNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Origin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Destination" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PassengerDetails" nillable="true" type="tns:ArrayOfBookSSRPaxItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SSRSegmentDetails" nillable="true" type="tns:SSRSegmentDetails" />
+  <xs:complexType name="ArrayOfBookSSRPaxItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BookSSRPaxItem" nillable="true" type="tns:BookSSRPaxItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBookSSRPaxItem" nillable="true" type="tns:ArrayOfBookSSRPaxItem" />
+  <xs:complexType name="BookSSRPaxItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PaxType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SelectedSSR" nillable="true" type="tns:ArrayOfSelectedSSRDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BookSSRPaxItem" nillable="true" type="tns:BookSSRPaxItem" />
+  <xs:complexType name="ArrayOfSelectedSSRDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SelectedSSRDetails" nillable="true" type="tns:SelectedSSRDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSelectedSSRDetails" nillable="true" type="tns:ArrayOfSelectedSSRDetails" />
+  <xs:complexType name="SelectedSSRDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SSRName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SSRAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="SSRCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SelectedSSRDetails" nillable="true" type="tns:SelectedSSRDetails" />
+  <xs:element name="GetBookSSRAfterBookingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetBookSSRAfterBookingResult" nillable="true" type="tns:BookSSRAfterBookingResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="BookSSRAfterBookingResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ResponseStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="UserTrackId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BookSSRAfterBookingOutput" nillable="true" type="tns:BookSSRAfterBookingOutput" />
+      <xs:element minOccurs="0" name="FailureRemarks" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BookSSRAfterBookingResponse" nillable="true" type="tns:BookSSRAfterBookingResponse" />
+  <xs:complexType name="BookSSRAfterBookingOutput">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Remarks" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BookSSRAfterBookingOutput" nillable="true" type="tns:BookSSRAfterBookingOutput" />
+  <xs:element name="GetSeatMapAfterBooking">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetSeatMapAfterBookingRequest" nillable="true" type="tns:SeatMapAfterBookingRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="SeatMapAfterBookingRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Authentication" nillable="true" type="tns:Authentication" />
+      <xs:element minOccurs="0" name="SeatMapAfterBookingInput" nillable="true" type="tns:SeatMapAfterBookingInput" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SeatMapAfterBookingRequest" nillable="true" type="tns:SeatMapAfterBookingRequest" />
+  <xs:complexType name="SeatMapAfterBookingInput">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="HermesPNR" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AirlineCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SeatMapAfterBookingInput" nillable="true" type="tns:SeatMapAfterBookingInput" />
+  <xs:element name="GetSeatMapAfterBookingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetSeatMapAfterBookingResult" nillable="true" type="tns:SeatMapAfterBookingResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="SeatMapAfterBookingResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ResponseStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="SeatMapAfterBookingOutput" nillable="true" type="tns:SeatMapAfterBookingOutput" />
+      <xs:element minOccurs="0" name="FailureRemarks" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SeatMapAfterBookingResponse" nillable="true" type="tns:SeatMapAfterBookingResponse" />
+  <xs:complexType name="SeatMapAfterBookingOutput">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="HermesPNR" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AirlinePNR" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PassengerDetails" nillable="true" type="tns:ArrayOfSeatMapPaxItem" />
+      <xs:element minOccurs="0" name="FlightSegments" nillable="true" type="tns:ArrayOfSeatMapSegmentDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SeatMapAfterBookingOutput" nillable="true" type="tns:SeatMapAfterBookingOutput" />
+  <xs:complexType name="ArrayOfSeatMapPaxItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SeatMapPaxItem" nillable="true" type="tns:SeatMapPaxItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSeatMapPaxItem" nillable="true" type="tns:ArrayOfSeatMapPaxItem" />
+  <xs:complexType name="SeatMapPaxItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PaxType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PaxNumber" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SeatMapPaxItem" nillable="true" type="tns:SeatMapPaxItem" />
+  <xs:complexType name="ArrayOfSeatMapSegmentDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SeatMapSegmentDetails" nillable="true" type="tns:SeatMapSegmentDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSeatMapSegmentDetails" nillable="true" type="tns:ArrayOfSeatMapSegmentDetails" />
+  <xs:complexType name="SeatMapSegmentDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FlightNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AirlineCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Origin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Destination" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DepartureDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ArrivalDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClassCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AirCraftType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClassType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SeatLayoutDetails" nillable="true" type="tns:SeatLayoutDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SeatMapSegmentDetails" nillable="true" type="tns:SeatMapSegmentDetails" />
+  <xs:complexType name="SeatLayoutDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SeatLayout" nillable="true" type="tns:SeatLayout" />
+      <xs:element minOccurs="0" name="BookedSeats" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AvailableSeats" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BlockedSeats" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SeatTypes" nillable="true" type="tns:ArrayOfSeatTypeDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SeatLayoutDetails" nillable="true" type="tns:SeatLayoutDetails" />
+  <xs:complexType name="SeatLayout">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SeatRows" nillable="true" type="tns:ArrayOfRow" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SeatLayout" nillable="true" type="tns:SeatLayout" />
+  <xs:complexType name="ArrayOfRow">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Row" nillable="true" type="tns:Row" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRow" nillable="true" type="tns:ArrayOfRow" />
+  <xs:complexType name="Row">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Seats" nillable="true" type="tns:ArrayOfSeatDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Row" nillable="true" type="tns:Row" />
+  <xs:complexType name="ArrayOfSeatDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SeatDetails" nillable="true" type="tns:SeatDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSeatDetails" nillable="true" type="tns:ArrayOfSeatDetails" />
+  <xs:complexType name="SeatDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SeatNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SeatCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SeatAmount" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SeatDetails" nillable="true" type="tns:SeatDetails" />
+  <xs:complexType name="ArrayOfSeatTypeDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SeatTypeDetails" nillable="true" type="tns:SeatTypeDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSeatTypeDetails" nillable="true" type="tns:ArrayOfSeatTypeDetails" />
+  <xs:complexType name="SeatTypeDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SeatTypeName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SeatNos" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SeatTypeDetails" nillable="true" type="tns:SeatTypeDetails" />
+  <xs:element name="GetSeatMapBeforeBooking">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetSeatMapBeforeBookingRequest" nillable="true" type="tns:SeatMapBeforeBookingRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="SeatMapBeforeBookingRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Authentication" nillable="true" type="tns:Authentication" />
+      <xs:element minOccurs="0" name="UserTrackId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SeatMapBeforeBookingInput" nillable="true" type="tns:SeatMapBeforeBookingInput" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SeatMapBeforeBookingRequest" nillable="true" type="tns:SeatMapBeforeBookingRequest" />
+  <xs:complexType name="SeatMapBeforeBookingInput">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AirlineCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FlightSegments" nillable="true" type="tns:ArrayOfFlightSegmentDetails" />
+      <xs:element minOccurs="0" name="PassengerDetails" nillable="true" type="tns:ArrayOfSeatMapPaxItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SeatMapBeforeBookingInput" nillable="true" type="tns:SeatMapBeforeBookingInput" />
+  <xs:complexType name="ArrayOfFlightSegmentDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="FlightSegmentDetails" nillable="true" type="tns:FlightSegmentDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFlightSegmentDetails" nillable="true" type="tns:ArrayOfFlightSegmentDetails" />
+  <xs:complexType name="FlightSegmentDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FlightId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AirlineCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClassCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AirCraftType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FlightSegmentDetails" nillable="true" type="tns:FlightSegmentDetails" />
+  <xs:element name="GetSeatMapBeforeBookingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetSeatMapBeforeBookingResult" nillable="true" type="tns:SeatMapBeforeBookingResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="SeatMapBeforeBookingResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ResponseStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="UserTrackId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SeatMapBeforeBookingOutput" nillable="true" type="tns:SeatMapBeforeBookingOutput" />
+      <xs:element minOccurs="0" name="FailureRemarks" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SeatMapBeforeBookingResponse" nillable="true" type="tns:SeatMapBeforeBookingResponse" />
+  <xs:complexType name="SeatMapBeforeBookingOutput">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PassengerDetails" nillable="true" type="tns:ArrayOfSeatMapPaxItem" />
+      <xs:element minOccurs="0" name="FlightSegments" nillable="true" type="tns:ArrayOfSeatMapSegmentDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SeatMapBeforeBookingOutput" nillable="true" type="tns:SeatMapBeforeBookingOutput" />
+  <xs:element name="GetSeatConfirmAfterBooking">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetSeatConfirmAfterBookingRequest" nillable="true" type="tns:SeatConfirmAfterBookingRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="SeatConfirmAfterBookingRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Authentication" nillable="true" type="tns:Authentication" />
+      <xs:element minOccurs="0" name="SeatConfirmAfterBookingInput" nillable="true" type="tns:SeatConfirmAfterBookingInput" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SeatConfirmAfterBookingRequest" nillable="true" type="tns:SeatConfirmAfterBookingRequest" />
+  <xs:complexType name="SeatConfirmAfterBookingInput">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="HermesPNR" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AirlinePNR" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AirlineCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FlightSegments" nillable="true" type="tns:ArrayOfSeatConfirmSegmentDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SeatConfirmAfterBookingInput" nillable="true" type="tns:SeatConfirmAfterBookingInput" />
+  <xs:complexType name="ArrayOfSeatConfirmSegmentDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SeatConfirmSegmentDetails" nillable="true" type="tns:SeatConfirmSegmentDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSeatConfirmSegmentDetails" nillable="true" type="tns:ArrayOfSeatConfirmSegmentDetails" />
+  <xs:complexType name="SeatConfirmSegmentDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AirlineCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FlightNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DepartureDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Origin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Destination" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClassCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PassengerDetails" nillable="true" type="tns:ArrayOfSeatConfirmPaxItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SeatConfirmSegmentDetails" nillable="true" type="tns:SeatConfirmSegmentDetails" />
+  <xs:complexType name="ArrayOfSeatConfirmPaxItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SeatConfirmPaxItem" nillable="true" type="tns:SeatConfirmPaxItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSeatConfirmPaxItem" nillable="true" type="tns:ArrayOfSeatConfirmPaxItem" />
+  <xs:complexType name="SeatConfirmPaxItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PaxType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PaxNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SeatCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SeatNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SeatAmount" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SeatConfirmPaxItem" nillable="true" type="tns:SeatConfirmPaxItem" />
+  <xs:element name="GetSeatConfirmAfterBookingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetSeatConfirmAfterBookingResult" nillable="true" type="tns:SeatConfirmAfterBookingResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="SeatConfirmAfterBookingResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ResponseStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="SeatConfirmAfterBookingOutput" nillable="true" type="tns:SeatConfirmAfterBookingOutput" />
+      <xs:element minOccurs="0" name="FailureRemarks" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SeatConfirmAfterBookingResponse" nillable="true" type="tns:SeatConfirmAfterBookingResponse" />
+  <xs:complexType name="SeatConfirmAfterBookingOutput">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Remarks" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SeatConfirmAfterBookingOutput" nillable="true" type="tns:SeatConfirmAfterBookingOutput" />
+  <xs:element name="GetSSRBeforeBooking">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetSSRBeforeBookingRequest" nillable="true" type="tns:SSRBeforeBookingRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="SSRBeforeBookingRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Authentication" nillable="true" type="tns:Authentication" />
+      <xs:element minOccurs="0" name="UserTrackId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SSRBeforeBookingInput" nillable="true" type="tns:SSRBeforeBookingInput" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SSRBeforeBookingRequest" nillable="true" type="tns:SSRBeforeBookingRequest" />
+  <xs:complexType name="SSRBeforeBookingInput">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SSRBBReqFlightSegments" nillable="true" type="tns:SSRBBReqFlightSegments" />
+      <xs:element minOccurs="0" name="AdultCount" type="xs:int" />
+      <xs:element minOccurs="0" name="ChildCount" type="xs:int" />
+      <xs:element minOccurs="0" name="InfantCount" type="xs:int" />
+      <xs:element minOccurs="0" name="SupplierId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SSRBeforeBookingInput" nillable="true" type="tns:SSRBeforeBookingInput" />
+  <xs:complexType name="SSRBBReqFlightSegments">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="OngoingSegments" nillable="true" type="tns:ArrayOfSSRBBReqSegmentDetails" />
+      <xs:element minOccurs="0" name="ReturnSegments" nillable="true" type="tns:ArrayOfSSRBBReqSegmentDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SSRBBReqFlightSegments" nillable="true" type="tns:SSRBBReqFlightSegments" />
+  <xs:complexType name="ArrayOfSSRBBReqSegmentDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SSRBBReqSegmentDetails" nillable="true" type="tns:SSRBBReqSegmentDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSSRBBReqSegmentDetails" nillable="true" type="tns:ArrayOfSSRBBReqSegmentDetails" />
+  <xs:complexType name="SSRBBReqSegmentDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FlightId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AirlineCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClassCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BasicAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="FareBasis" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SSRBBReqSegmentDetails" nillable="true" type="tns:SSRBBReqSegmentDetails" />
+  <xs:element name="GetSSRBeforeBookingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetSSRBeforeBookingResult" nillable="true" type="tns:SSRBeforeBookingResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="SSRBeforeBookingResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ResponseStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="UserTrackId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SSRBeforeBookingOutput" nillable="true" type="tns:SSRBeforeBookingOutput" />
+      <xs:element minOccurs="0" name="FailureRemarks" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SSRBeforeBookingResponse" nillable="true" type="tns:SSRBeforeBookingResponse" />
+  <xs:complexType name="SSRBeforeBookingOutput">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SSRBBResFlightSegments" nillable="true" type="tns:SSRBBResFlightSegments" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SSRBeforeBookingOutput" nillable="true" type="tns:SSRBeforeBookingOutput" />
+  <xs:complexType name="SSRBBResFlightSegments">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="OngoingSegments" nillable="true" type="tns:SSRBBResSegments" />
+      <xs:element minOccurs="0" name="ReturnSegments" nillable="true" type="tns:SSRBBResSegments" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SSRBBResFlightSegments" nillable="true" type="tns:SSRBBResFlightSegments" />
+  <xs:complexType name="SSRBBResSegments">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SSRBBResSegments" nillable="true" type="tns:ArrayOfSSRBBResSegmentDetails" />
+      <xs:element minOccurs="0" name="SegmentwiseSSRFlag" nillable="true" type="tns:ArrayOfSegmentwiseSSRItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SSRBBResSegments" nillable="true" type="tns:SSRBBResSegments" />
+  <xs:complexType name="ArrayOfSSRBBResSegmentDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SSRBBResSegmentDetails" nillable="true" type="tns:SSRBBResSegmentDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSSRBBResSegmentDetails" nillable="true" type="tns:ArrayOfSSRBBResSegmentDetails" />
+  <xs:complexType name="SSRBBResSegmentDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FlightId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AirlineCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SeatMapFlag" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AvailableSSR" nillable="true" type="tns:ArrayOfSSRTypes" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SSRBBResSegmentDetails" nillable="true" type="tns:SSRBBResSegmentDetails" />
+  <xs:element name="GetBookBlockedSeat">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetBookBlockedSeatRequest" nillable="true" type="tns:BookBlockedSeatRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="BookBlockedSeatRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Authentication" nillable="true" type="tns:Authentication" />
+      <xs:element minOccurs="0" name="BookBlockedSeatInput" nillable="true" type="tns:BookBlockedSeatInput" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BookBlockedSeatRequest" nillable="true" type="tns:BookBlockedSeatRequest" />
+  <xs:complexType name="BookBlockedSeatInput">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="HermesPNR" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NotifyFareChange" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BookBlockedSeatInput" nillable="true" type="tns:BookBlockedSeatInput" />
+  <xs:element name="GetBookBlockedSeatResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetBookBlockedSeatResult" nillable="true" type="tns:BookBlockedSeatResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="BookBlockedSeatResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ResponseStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="UserTrackId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BookBlockedSeatOutput" nillable="true" type="tns:BookBlockedSeatOutput">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="FailureRemarks" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BookBlockedSeatResponse" nillable="true" type="tns:BookBlockedSeatResponse" />
+  <xs:complexType name="BookBlockedSeatOutput">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="TicketDetails" nillable="true" type="tns:TicketDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BookBlockedSeatOutput" nillable="true" type="tns:BookBlockedSeatOutput" />
+  <xs:element name="GetCancellationPenalty">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetCancellationPenaltyRequest" nillable="true" type="tns:CancellationPenaltyRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="CancellationPenaltyRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Authentication" nillable="true" type="tns:Authentication" />
+      <xs:element minOccurs="0" name="CancellationPenaltyInput" nillable="true" type="tns:CancellationPenaltyInput" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CancellationPenaltyRequest" nillable="true" type="tns:CancellationPenaltyRequest" />
+  <xs:complexType name="CancellationPenaltyInput">
+    <xs:sequence>
+      <xs:element name="HermesPNR" nillable="true" type="xs:string" />
+      <xs:element name="AirlinePNR" nillable="true" type="xs:string" />
+      <xs:element name="AirlineCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CancellationPenaltyInput" nillable="true" type="tns:CancellationPenaltyInput" />
+  <xs:element name="GetCancellationPenaltyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetCancellationPenaltyResult" nillable="true" type="tns:CancellationPenaltyResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="CancellationPenaltyResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ResponseStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="CancellationPenaltyOutput" nillable="true" type="tns:CancellationPenaltyOutput">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="FailureRemarks" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CancellationPenaltyResponse" nillable="true" type="tns:CancellationPenaltyResponse" />
+  <xs:complexType name="CancellationPenaltyOutput">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PenaltyAmount" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CancellationPenaltyOutput" nillable="true" type="tns:CancellationPenaltyOutput" />
+  <xs:element name="GetDirectCancellation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetDirectCancellationRequest" nillable="true" type="tns:DirectCancellationRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="DirectCancellationRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Authentication" nillable="true" type="tns:Authentication" />
+      <xs:element minOccurs="0" name="DirectCancellationInput" nillable="true" type="tns:DirectCancellationInput" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DirectCancellationRequest" nillable="true" type="tns:DirectCancellationRequest" />
+  <xs:complexType name="DirectCancellationInput">
+    <xs:sequence>
+      <xs:element name="HermesPNR" nillable="true" type="xs:string" />
+      <xs:element name="AirlinePNR" nillable="true" type="xs:string" />
+      <xs:element name="CRSPNR" nillable="true" type="xs:string" />
+      <xs:element name="AirlineCode" nillable="true" type="xs:string" />
+      <xs:element name="DirectCancelPassengerDetails" nillable="true" type="tns:ArrayOfDirectCancelPaxItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DirectCancellationInput" nillable="true" type="tns:DirectCancellationInput" />
+  <xs:complexType name="ArrayOfDirectCancelPaxItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DirectCancelPaxItem" nillable="true" type="tns:DirectCancelPaxItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDirectCancelPaxItem" nillable="true" type="tns:ArrayOfDirectCancelPaxItem" />
+  <xs:complexType name="DirectCancelPaxItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PaxNumber" type="xs:int" />
+      <xs:element minOccurs="0" name="DirectCancelTicketDetails" nillable="true" type="tns:ArrayOfDirectCancelTicketItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DirectCancelPaxItem" nillable="true" type="tns:DirectCancelPaxItem" />
+  <xs:complexType name="ArrayOfDirectCancelTicketItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DirectCancelTicketItem" nillable="true" type="tns:DirectCancelTicketItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDirectCancelTicketItem" nillable="true" type="tns:ArrayOfDirectCancelTicketItem" />
+  <xs:complexType name="DirectCancelTicketItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="TicketNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SegmentId" type="xs:int" />
+      <xs:element minOccurs="0" name="FlightNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Origin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Destination" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DirectCancelTicketItem" nillable="true" type="tns:DirectCancelTicketItem" />
+  <xs:element name="GetDirectCancellationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetDirectCancellationResult" nillable="true" type="tns:DirectCancellationResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="DirectCancellationResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ResponseStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="DirectCancellationOutput" nillable="true" type="tns:DirectCancellationOutput">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="FailureRemarks" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DirectCancellationResponse" nillable="true" type="tns:DirectCancellationResponse" />
+  <xs:complexType name="DirectCancellationOutput">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DirectCancellationDetails" nillable="true" type="tns:DirectCancellationDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DirectCancellationOutput" nillable="true" type="tns:DirectCancellationOutput" />
+  <xs:complexType name="DirectCancellationDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DirectCancellationRemarks" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DirectCancellationDetails" nillable="true" type="tns:DirectCancellationDetails" />
+  <xs:element name="GetRescheduleAvailability">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetRescheduleAvailabilityRequest" nillable="true" type="tns:RescheduleAvailabilityRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="RescheduleAvailabilityRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Authentication" nillable="true" type="tns:Authentication" />
+      <xs:element minOccurs="0" name="UserTrackId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RescheduleAvailabilityInput" nillable="true" type="tns:RescheduleAvailabilityInput" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RescheduleAvailabilityRequest" nillable="true" type="tns:RescheduleAvailabilityRequest" />
+  <xs:complexType name="RescheduleAvailabilityInput">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BookingType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="JourneyDetails" nillable="true" type="tns:ArrayOfTripDetails" />
+      <xs:element minOccurs="0" name="ClassType" nillable="true" type="xs:string" />
+      <xs:element name="AirlineCode" nillable="true" type="xs:string" />
+      <xs:element name="AdultCount" type="xs:int" />
+      <xs:element name="ChildCount" type="xs:int" />
+      <xs:element name="InfantCount" type="xs:int" />
+      <xs:element name="ResidentofIndia" type="xs:int" />
+      <xs:element name="Optional1" nillable="true" type="xs:string" />
+      <xs:element name="Optional2" nillable="true" type="xs:string" />
+      <xs:element name="Optional3" nillable="true" type="xs:string" />
+      <xs:element name="CRSPNR" nillable="true" type="xs:string" />
+      <xs:element name="SupplierId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RescheduleAvailabilityInput" nillable="true" type="tns:RescheduleAvailabilityInput" />
+  <xs:element name="GetRescheduleAvailabilityResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetRescheduleAvailabilityResult" nillable="true" type="tns:RescheduleAvailabilityResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="RescheduleAvailabilityResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ResponseStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="UserTrackId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RescheduleAvailabilityOutput" nillable="true" type="tns:RescheduleAvailabilityOutput">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="FailureRemarks" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RescheduleAvailabilityResponse" nillable="true" type="tns:RescheduleAvailabilityResponse" />
+  <xs:complexType name="RescheduleAvailabilityOutput">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AvailableFlights" nillable="true" type="tns:AvailableFlights" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RescheduleAvailabilityOutput" nillable="true" type="tns:RescheduleAvailabilityOutput" />
+  <xs:element name="GetRescheduleFareRule">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetRescheduleFareRuleRequest" nillable="true" type="tns:RescheduleFareRuleRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="RescheduleFareRuleRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Authentication" nillable="true" type="tns:Authentication" />
+      <xs:element minOccurs="0" name="RescheduleFareRuleInput" nillable="true" type="tns:RescheduleFareRuleInput" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RescheduleFareRuleRequest" nillable="true" type="tns:RescheduleFareRuleRequest" />
+  <xs:complexType name="RescheduleFareRuleInput">
+    <xs:sequence>
+      <xs:element name="HermesPNR" nillable="true" type="xs:string" />
+      <xs:element name="AirlineCode" nillable="true" type="xs:string" />
+      <xs:element name="Origin" nillable="true" type="xs:string" />
+      <xs:element name="Destination" nillable="true" type="xs:string" />
+      <xs:element name="SupplierId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RescheduleFareRuleInput" nillable="true" type="tns:RescheduleFareRuleInput" />
+  <xs:element name="GetRescheduleFareRuleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetRescheduleFareRuleResult" nillable="true" type="tns:RescheduleFareRuleResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="RescheduleFareRuleResponse">
+    <xs:sequence>
+      <xs:element name="ResponseStatus" type="xs:int" />
+      <xs:element name="UserTrackId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RescheduleFareRuleOutput" nillable="true" type="tns:RescheduleFareRuleOutput">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="FailureRemarks" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RescheduleFareRuleResponse" nillable="true" type="tns:RescheduleFareRuleResponse" />
+  <xs:complexType name="RescheduleFareRuleOutput">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Remarks" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RescheduleFareRuleOutput" nillable="true" type="tns:RescheduleFareRuleOutput" />
+  <xs:element name="GetReschedulePenalty">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetReschedulePenaltyRequest" nillable="true" type="tns:ReschedulePenaltyRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ReschedulePenaltyRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Authentication" nillable="true" type="tns:Authentication" />
+      <xs:element minOccurs="0" name="UserTrackId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReschedulePenaltyInput" nillable="true" type="tns:ReschedulePenaltyInput" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReschedulePenaltyRequest" nillable="true" type="tns:ReschedulePenaltyRequest" />
+  <xs:complexType name="ReschedulePenaltyInput">
+    <xs:sequence>
+      <xs:element name="HermesPNR" nillable="true" type="xs:string" />
+      <xs:element name="AirlinePNR" nillable="true" type="xs:string" />
+      <xs:element name="CRSPNR" nillable="true" type="xs:string" />
+      <xs:element name="ReschedulePassengerDetails" nillable="true" type="tns:ArrayOfReschedulePaxItem" />
+      <xs:element name="BookedSegments" nillable="true" type="tns:ArrayOfSegmentDetails" />
+      <xs:element name="NewFlightSegments" nillable="true" type="tns:ArrayOfSegmentDetails" />
+      <xs:element minOccurs="0" name="JourneyDetails" nillable="true" type="tns:ArrayOfTripDetails" />
+      <xs:element minOccurs="0" name="RescheduleRemarks" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClassType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CustomerContactNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReschedulePenaltyInput" nillable="true" type="tns:ReschedulePenaltyInput" />
+  <xs:complexType name="ArrayOfReschedulePaxItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ReschedulePaxItem" nillable="true" type="tns:ReschedulePaxItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfReschedulePaxItem" nillable="true" type="tns:ArrayOfReschedulePaxItem" />
+  <xs:complexType name="ReschedulePaxItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PaxNumber" type="xs:int" />
+      <xs:element minOccurs="0" name="PaxType" type="xs:int" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TicketNumber" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReschedulePaxItem" nillable="true" type="tns:ReschedulePaxItem" />
+  <xs:complexType name="ArrayOfSegmentDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SegmentDetails" nillable="true" type="tns:SegmentDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSegmentDetails" nillable="true" type="tns:ArrayOfSegmentDetails" />
+  <xs:complexType name="SegmentDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AirlineCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BookingType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Origin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Destination" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DepartureDateTime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ArrivalDateTime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FlightNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClassCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClassCodeDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FlightId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SegmentDetails" nillable="true" type="tns:SegmentDetails" />
+  <xs:element name="GetReschedulePenaltyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetReschedulePenaltyResult" nillable="true" type="tns:ReschedulePenaltyResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ReschedulePenaltyResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ResponseStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="UserTrackId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReschedulePenaltyOutput" nillable="true" type="tns:ReschedulePenaltyOutput" />
+      <xs:element minOccurs="0" name="FailureRemarks" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReschedulePenaltyResponse" nillable="true" type="tns:ReschedulePenaltyResponse" />
+  <xs:complexType name="ReschedulePenaltyOutput">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BasicAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="TaxDetails" nillable="true" type="tns:ArrayOfTaxItem" />
+      <xs:element minOccurs="0" name="GrossAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="FareDiffernce" type="xs:double" />
+      <xs:element minOccurs="0" name="ChangeFeeAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="TotalPayableAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="FareDiffernceFlag" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReschedulePenaltyOutput" nillable="true" type="tns:ReschedulePenaltyOutput" />
+  <xs:element name="GetRescheduleBook">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetRescheduleBookRequest" nillable="true" type="tns:RescheduleBookRequest" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="RescheduleBookRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Authentication" nillable="true" type="tns:Authentication" />
+      <xs:element minOccurs="0" name="UserTrackId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RescheduleBookInput" nillable="true" type="tns:RescheduleBookInput" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RescheduleBookRequest" nillable="true" type="tns:RescheduleBookRequest" />
+  <xs:complexType name="RescheduleBookInput">
+    <xs:sequence>
+      <xs:element name="HermesPNR" nillable="true" type="xs:string" />
+      <xs:element name="AirlinePNR" nillable="true" type="xs:string" />
+      <xs:element name="CRSPNR" nillable="true" type="xs:string" />
+      <xs:element name="ReschedulePassengerDetails" nillable="true" type="tns:ArrayOfReschedulePaxItem" />
+      <xs:element name="BookedSegments" nillable="true" type="tns:ArrayOfSegmentDetails" />
+      <xs:element name="NewFlightSegments" nillable="true" type="tns:ArrayOfSegmentDetails" />
+      <xs:element minOccurs="0" name="JourneyDetails" nillable="true" type="tns:ArrayOfTripDetails" />
+      <xs:element minOccurs="0" name="RescheduleRemarks" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClassType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CustomerContactNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TotalPayableAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="FareDifferenceAmount" type="xs:double" />
+      <xs:element minOccurs="0" name="SupplierId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RescheduleBookInput" nillable="true" type="tns:RescheduleBookInput" />
+  <xs:element name="GetRescheduleBookResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetRescheduleBookResult" nillable="true" type="tns:RescheduleBookResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="RescheduleBookResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ResponseStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="UserTrackId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RescheduleBookOutput" nillable="true" type="tns:RescheduleBookOutput">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="FailureRemarks" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo>
+            <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RescheduleBookResponse" nillable="true" type="tns:RescheduleBookResponse" />
+  <xs:complexType name="RescheduleBookOutput">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FlightTicketDetails" nillable="true" type="tns:ArrayOfTicketDetails" />
+      <xs:element minOccurs="0" name="BlockingDetails" nillable="true" type="tns:ArrayOfBlockedTicketDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RescheduleBookOutput" nillable="true" type="tns:RescheduleBookOutput" />
+  <xs:element name="GetGUID">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetGUIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetGUIDResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMongo">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMongoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetMongoResult" nillable="true" type="tns:MongoResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="MongoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MongoData" nillable="true" type="tns:ArrayOfMongoData" />
+      <xs:element minOccurs="0" name="FailureMessage" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MongoResponse" nillable="true" type="tns:MongoResponse" />
+  <xs:complexType name="ArrayOfMongoData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MongoData" nillable="true" type="tns:MongoData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMongoData" nillable="true" type="tns:ArrayOfMongoData" />
+  <xs:complexType name="MongoData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="_id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Project" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MFunction" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MModule" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MessageType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Trackid" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Others" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HostIP" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TerminalId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Time" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MongoData" nillable="true" type="tns:MongoData" />
+</xs:schema>

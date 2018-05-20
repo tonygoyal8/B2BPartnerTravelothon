@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="59aade9c-a905-493a-bd78-3e7a61e3824e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://115.248.39.80/HermesDomAir/DomesticAir.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="DomesticAir.wsdl" MetadataType="Wsdl" ID="e5b84851-226b-45aa-89cf-1dfc091a4676" SourceId="1" SourceUrl="http://115.248.39.80/HermesDomAir/DomesticAir.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="DomesticAir.xsd" MetadataType="Schema" ID="cb987711-6f36-462d-bbfa-af4a23f87b38" SourceId="1" SourceUrl="http://115.248.39.80/HermesDomAir/DomesticAir.svc?xsd=xsd0" />
+    <MetadataFile FileName="DomesticAir1.wsdl" MetadataType="Wsdl" ID="5647131e-9672-4924-9e6d-a4cf2d0ecbeb" SourceId="1" SourceUrl="http://115.248.39.80/HermesDomAir/DomesticAir.svc?wsdl" />
+    <MetadataFile FileName="DomesticAir.disco" MetadataType="Disco" ID="e262d91c-0b85-4e9c-81f4-61df318e21e4" SourceId="1" SourceUrl="http://115.248.39.80/HermesDomAir/DomesticAir.svc?disco" />
+    <MetadataFile FileName="DomesticAir1.xsd" MetadataType="Schema" ID="d5816146-96fc-4467-87ca-78bbe34e817e" SourceId="1" SourceUrl="http://115.248.39.80/HermesDomAir/DomesticAir.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

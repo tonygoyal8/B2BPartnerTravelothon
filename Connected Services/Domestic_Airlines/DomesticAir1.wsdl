@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://hermes-it.in/API" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:i0="http://tempuri.org/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="DomesticAir" targetNamespace="http://hermes-it.in/API" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:import namespace="http://tempuri.org/" location="http://115.248.39.80/HermesDomAir/DomesticAir.svc?wsdl=wsdl0" />
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://hermes-it.in/API/Imports">
+      <xsd:import schemaLocation="http://115.248.39.80/HermesDomAir/DomesticAir.svc?xsd=xsd0" namespace="http://hermes-it.in/API" />
+      <xsd:import schemaLocation="http://115.248.39.80/HermesDomAir/DomesticAir.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="DomesticAir_GetAvailability_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAvailability" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetAvailability_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAvailabilityResponse" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetAvailability_StringFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/" name="detail" element="q1:string" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetTax_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTax" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetTax_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTaxResponse" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetTax_StringFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/" name="detail" element="q2:string" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetBook_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBook" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetBook_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBookResponse" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetBook_StringFault_FaultMessage">
+    <wsdl:part xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/" name="detail" element="q3:string" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetTransactionStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTransactionStatus" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetTransactionStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTransactionStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetTransactionStatus_StringFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/" name="detail" element="q4:string" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetCancellation_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCancellation" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetCancellation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCancellationResponse" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetCancellation_StringFault_FaultMessage">
+    <wsdl:part xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/" name="detail" element="q5:string" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetPartialCancellation_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPartialCancellation" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetPartialCancellation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPartialCancellationResponse" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetPartialCancellation_StringFault_FaultMessage">
+    <wsdl:part xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/" name="detail" element="q6:string" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetBookedHistory_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBookedHistory" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetBookedHistory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBookedHistoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetBookedHistory_StringFault_FaultMessage">
+    <wsdl:part xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/" name="detail" element="q7:string" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetFareRule_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFareRule" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetFareRule_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFareRuleResponse" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetFareRule_StringFault_FaultMessage">
+    <wsdl:part xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/" name="detail" element="q8:string" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetReprint_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetReprint" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetReprint_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetReprintResponse" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetReprint_StringFault_FaultMessage">
+    <wsdl:part xmlns:q9="http://schemas.microsoft.com/2003/10/Serialization/" name="detail" element="q9:string" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetAgentCreditBalance_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAgentCreditBalance" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetAgentCreditBalance_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAgentCreditBalanceResponse" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetAgentCreditBalance_StringFault_FaultMessage">
+    <wsdl:part xmlns:q10="http://schemas.microsoft.com/2003/10/Serialization/" name="detail" element="q10:string" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetAccountStatement_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAccountStatement" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetAccountStatement_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAccountStatementResponse" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetAccountStatement_StringFault_FaultMessage">
+    <wsdl:part xmlns:q11="http://schemas.microsoft.com/2003/10/Serialization/" name="detail" element="q11:string" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetCancellationDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCancellationDetails" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetCancellationDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCancellationDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetCancellationDetails_StringFault_FaultMessage">
+    <wsdl:part xmlns:q12="http://schemas.microsoft.com/2003/10/Serialization/" name="detail" element="q12:string" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetSSRAfterBooking_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSSRAfterBooking" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetSSRAfterBooking_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSSRAfterBookingResponse" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetSSRAfterBooking_StringFault_FaultMessage">
+    <wsdl:part xmlns:q13="http://schemas.microsoft.com/2003/10/Serialization/" name="detail" element="q13:string" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetBookSSRAfterBooking_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBookSSRAfterBooking" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetBookSSRAfterBooking_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBookSSRAfterBookingResponse" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetBookSSRAfterBooking_StringFault_FaultMessage">
+    <wsdl:part xmlns:q14="http://schemas.microsoft.com/2003/10/Serialization/" name="detail" element="q14:string" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetSeatMapAfterBooking_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSeatMapAfterBooking" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetSeatMapAfterBooking_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSeatMapAfterBookingResponse" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetSeatMapAfterBooking_StringFault_FaultMessage">
+    <wsdl:part xmlns:q15="http://schemas.microsoft.com/2003/10/Serialization/" name="detail" element="q15:string" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetSeatMapBeforeBooking_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSeatMapBeforeBooking" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetSeatMapBeforeBooking_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSeatMapBeforeBookingResponse" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetSeatMapBeforeBooking_StringFault_FaultMessage">
+    <wsdl:part xmlns:q16="http://schemas.microsoft.com/2003/10/Serialization/" name="detail" element="q16:string" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetSeatConfirmAfterBooking_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSeatConfirmAfterBooking" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetSeatConfirmAfterBooking_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSeatConfirmAfterBookingResponse" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetSeatConfirmAfterBooking_StringFault_FaultMessage">
+    <wsdl:part xmlns:q17="http://schemas.microsoft.com/2003/10/Serialization/" name="detail" element="q17:string" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetSSRBeforeBooking_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSSRBeforeBooking" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetSSRBeforeBooking_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSSRBeforeBookingResponse" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetSSRBeforeBooking_StringFault_FaultMessage">
+    <wsdl:part xmlns:q18="http://schemas.microsoft.com/2003/10/Serialization/" name="detail" element="q18:string" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetBookBlockedSeat_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBookBlockedSeat" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetBookBlockedSeat_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBookBlockedSeatResponse" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetBookBlockedSeat_StringFault_FaultMessage">
+    <wsdl:part xmlns:q19="http://schemas.microsoft.com/2003/10/Serialization/" name="detail" element="q19:string" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetCancellationPenalty_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCancellationPenalty" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetCancellationPenalty_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCancellationPenaltyResponse" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetCancellationPenalty_StringFault_FaultMessage">
+    <wsdl:part xmlns:q20="http://schemas.microsoft.com/2003/10/Serialization/" name="detail" element="q20:string" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetDirectCancellation_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDirectCancellation" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetDirectCancellation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDirectCancellationResponse" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetDirectCancellation_StringFault_FaultMessage">
+    <wsdl:part xmlns:q21="http://schemas.microsoft.com/2003/10/Serialization/" name="detail" element="q21:string" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetRescheduleAvailability_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRescheduleAvailability" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetRescheduleAvailability_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRescheduleAvailabilityResponse" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetRescheduleAvailability_StringFault_FaultMessage">
+    <wsdl:part xmlns:q22="http://schemas.microsoft.com/2003/10/Serialization/" name="detail" element="q22:string" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetRescheduleFareRule_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRescheduleFareRule" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetRescheduleFareRule_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRescheduleFareRuleResponse" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetRescheduleFareRule_StringFault_FaultMessage">
+    <wsdl:part xmlns:q23="http://schemas.microsoft.com/2003/10/Serialization/" name="detail" element="q23:string" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetReschedulePenalty_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetReschedulePenalty" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetReschedulePenalty_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetReschedulePenaltyResponse" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetReschedulePenalty_StringFault_FaultMessage">
+    <wsdl:part xmlns:q24="http://schemas.microsoft.com/2003/10/Serialization/" name="detail" element="q24:string" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetRescheduleBook_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRescheduleBook" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetRescheduleBook_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRescheduleBookResponse" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetRescheduleBook_StringFault_FaultMessage">
+    <wsdl:part xmlns:q25="http://schemas.microsoft.com/2003/10/Serialization/" name="detail" element="q25:string" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetGUID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetGUID" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetGUID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetGUIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetGUID_StringFault_FaultMessage">
+    <wsdl:part xmlns:q26="http://schemas.microsoft.com/2003/10/Serialization/" name="detail" element="q26:string" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetMongo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMongo" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetMongo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMongoResponse" />
+  </wsdl:message>
+  <wsdl:message name="DomesticAir_GetMongo_StringFault_FaultMessage">
+    <wsdl:part xmlns:q27="http://schemas.microsoft.com/2003/10/Serialization/" name="detail" element="q27:string" />
+  </wsdl:message>
+  <wsdl:portType name="DomesticAir">
+    <wsdl:operation name="GetAvailability">
+      <wsdl:input wsaw:Action="http://hermes-it.in/API/DomesticAir/GetAvailability" message="tns:DomesticAir_GetAvailability_InputMessage" />
+      <wsdl:output wsaw:Action="http://hermes-it.in/API/DomesticAir/GetAvailabilityResponse" message="tns:DomesticAir_GetAvailability_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://hermes-it.in/API/DomesticAir/GetAvailabilityStringFault" name="StringFault" message="tns:DomesticAir_GetAvailability_StringFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTax">
+      <wsdl:input wsaw:Action="http://hermes-it.in/API/DomesticAir/GetTax" message="tns:DomesticAir_GetTax_InputMessage" />
+      <wsdl:output wsaw:Action="http://hermes-it.in/API/DomesticAir/GetTaxResponse" message="tns:DomesticAir_GetTax_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://hermes-it.in/API/DomesticAir/GetTaxStringFault" name="StringFault" message="tns:DomesticAir_GetTax_StringFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBook">
+      <wsdl:input wsaw:Action="http://hermes-it.in/API/DomesticAir/GetBook" message="tns:DomesticAir_GetBook_InputMessage" />
+      <wsdl:output wsaw:Action="http://hermes-it.in/API/DomesticAir/GetBookResponse" message="tns:DomesticAir_GetBook_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://hermes-it.in/API/DomesticAir/GetBookStringFault" name="StringFault" message="tns:DomesticAir_GetBook_StringFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTransactionStatus">
+      <wsdl:input wsaw:Action="http://hermes-it.in/API/DomesticAir/GetTransactionStatus" message="tns:DomesticAir_GetTransactionStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://hermes-it.in/API/DomesticAir/GetTransactionStatusResponse" message="tns:DomesticAir_GetTransactionStatus_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://hermes-it.in/API/DomesticAir/GetTransactionStatusStringFault" name="StringFault" message="tns:DomesticAir_GetTransactionStatus_StringFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCancellation">
+      <wsdl:input wsaw:Action="http://hermes-it.in/API/DomesticAir/GetCancellation" message="tns:DomesticAir_GetCancellation_InputMessage" />
+      <wsdl:output wsaw:Action="http://hermes-it.in/API/DomesticAir/GetCancellationResponse" message="tns:DomesticAir_GetCancellation_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://hermes-it.in/API/DomesticAir/GetCancellationStringFault" name="StringFault" message="tns:DomesticAir_GetCancellation_StringFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPartialCancellation">
+      <wsdl:input wsaw:Action="http://hermes-it.in/API/DomesticAir/GetPartialCancellation" message="tns:DomesticAir_GetPartialCancellation_InputMessage" />
+      <wsdl:output wsaw:Action="http://hermes-it.in/API/DomesticAir/GetPartialCancellationResponse" message="tns:DomesticAir_GetPartialCancellation_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://hermes-it.in/API/DomesticAir/GetPartialCancellationStringFault" name="StringFault" message="tns:DomesticAir_GetPartialCancellation_StringFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBookedHistory">
+      <wsdl:input wsaw:Action="http://hermes-it.in/API/DomesticAir/GetBookedHistory" message="tns:DomesticAir_GetBookedHistory_InputMessage" />
+      <wsdl:output wsaw:Action="http://hermes-it.in/API/DomesticAir/GetBookedHistoryResponse" message="tns:DomesticAir_GetBookedHistory_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://hermes-it.in/API/DomesticAir/GetBookedHistoryStringFault" name="StringFault" message="tns:DomesticAir_GetBookedHistory_StringFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFareRule">
+      <wsdl:input wsaw:Action="http://hermes-it.in/API/DomesticAir/GetFareRule" message="tns:DomesticAir_GetFareRule_InputMessage" />
+      <wsdl:output wsaw:Action="http://hermes-it.in/API/DomesticAir/GetFareRuleResponse" message="tns:DomesticAir_GetFareRule_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://hermes-it.in/API/DomesticAir/GetFareRuleStringFault" name="StringFault" message="tns:DomesticAir_GetFareRule_StringFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReprint">
+      <wsdl:input wsaw:Action="http://hermes-it.in/API/DomesticAir/GetReprint" message="tns:DomesticAir_GetReprint_InputMessage" />
+      <wsdl:output wsaw:Action="http://hermes-it.in/API/DomesticAir/GetReprintResponse" message="tns:DomesticAir_GetReprint_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://hermes-it.in/API/DomesticAir/GetReprintStringFault" name="StringFault" message="tns:DomesticAir_GetReprint_StringFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAgentCreditBalance">
+      <wsdl:input wsaw:Action="http://hermes-it.in/API/DomesticAir/GetAgentCreditBalance" message="tns:DomesticAir_GetAgentCreditBalance_InputMessage" />
+      <wsdl:output wsaw:Action="http://hermes-it.in/API/DomesticAir/GetAgentCreditBalanceResponse" message="tns:DomesticAir_GetAgentCreditBalance_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://hermes-it.in/API/DomesticAir/GetAgentCreditBalanceStringFault" name="StringFault" message="tns:DomesticAir_GetAgentCreditBalance_StringFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAccountStatement">
+      <wsdl:input wsaw:Action="http://hermes-it.in/API/DomesticAir/GetAccountStatement" message="tns:DomesticAir_GetAccountStatement_InputMessage" />
+      <wsdl:output wsaw:Action="http://hermes-it.in/API/DomesticAir/GetAccountStatementResponse" message="tns:DomesticAir_GetAccountStatement_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://hermes-it.in/API/DomesticAir/GetAccountStatementStringFault" name="StringFault" message="tns:DomesticAir_GetAccountStatement_StringFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCancellationDetails">
+      <wsdl:input wsaw:Action="http://hermes-it.in/API/DomesticAir/GetCancellationDetails" message="tns:DomesticAir_GetCancellationDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://hermes-it.in/API/DomesticAir/GetCancellationDetailsResponse" message="tns:DomesticAir_GetCancellationDetails_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://hermes-it.in/API/DomesticAir/GetCancellationDetailsStringFault" name="StringFault" message="tns:DomesticAir_GetCancellationDetails_StringFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSSRAfterBooking">
+      <wsdl:input wsaw:Action="http://hermes-it.in/API/DomesticAir/GetSSRAfterBooking" message="tns:DomesticAir_GetSSRAfterBooking_InputMessage" />
+      <wsdl:output wsaw:Action="http://hermes-it.in/API/DomesticAir/GetSSRAfterBookingResponse" message="tns:DomesticAir_GetSSRAfterBooking_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://hermes-it.in/API/DomesticAir/GetSSRAfterBookingStringFault" name="StringFault" message="tns:DomesticAir_GetSSRAfterBooking_StringFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBookSSRAfterBooking">
+      <wsdl:input wsaw:Action="http://hermes-it.in/API/DomesticAir/GetBookSSRAfterBooking" message="tns:DomesticAir_GetBookSSRAfterBooking_InputMessage" />
+      <wsdl:output wsaw:Action="http://hermes-it.in/API/DomesticAir/GetBookSSRAfterBookingResponse" message="tns:DomesticAir_GetBookSSRAfterBooking_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://hermes-it.in/API/DomesticAir/GetBookSSRAfterBookingStringFault" name="StringFault" message="tns:DomesticAir_GetBookSSRAfterBooking_StringFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSeatMapAfterBooking">
+      <wsdl:input wsaw:Action="http://hermes-it.in/API/DomesticAir/GetSeatMapAfterBooking" message="tns:DomesticAir_GetSeatMapAfterBooking_InputMessage" />
+      <wsdl:output wsaw:Action="http://hermes-it.in/API/DomesticAir/GetSeatMapAfterBookingResponse" message="tns:DomesticAir_GetSeatMapAfterBooking_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://hermes-it.in/API/DomesticAir/GetSeatMapAfterBookingStringFault" name="StringFault" message="tns:DomesticAir_GetSeatMapAfterBooking_StringFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSeatMapBeforeBooking">
+      <wsdl:input wsaw:Action="http://hermes-it.in/API/DomesticAir/GetSeatMapBeforeBooking" message="tns:DomesticAir_GetSeatMapBeforeBooking_InputMessage" />
+      <wsdl:output wsaw:Action="http://hermes-it.in/API/DomesticAir/GetSeatMapBeforeBookingResponse" message="tns:DomesticAir_GetSeatMapBeforeBooking_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://hermes-it.in/API/DomesticAir/GetSeatMapBeforeBookingStringFault" name="StringFault" message="tns:DomesticAir_GetSeatMapBeforeBooking_StringFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSeatConfirmAfterBooking">
+      <wsdl:input wsaw:Action="http://hermes-it.in/API/DomesticAir/GetSeatConfirmAfterBooking" message="tns:DomesticAir_GetSeatConfirmAfterBooking_InputMessage" />
+      <wsdl:output wsaw:Action="http://hermes-it.in/API/DomesticAir/GetSeatConfirmAfterBookingResponse" message="tns:DomesticAir_GetSeatConfirmAfterBooking_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://hermes-it.in/API/DomesticAir/GetSeatConfirmAfterBookingStringFault" name="StringFault" message="tns:DomesticAir_GetSeatConfirmAfterBooking_StringFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSSRBeforeBooking">
+      <wsdl:input wsaw:Action="http://hermes-it.in/API/DomesticAir/GetSSRBeforeBooking" message="tns:DomesticAir_GetSSRBeforeBooking_InputMessage" />
+      <wsdl:output wsaw:Action="http://hermes-it.in/API/DomesticAir/GetSSRBeforeBookingResponse" message="tns:DomesticAir_GetSSRBeforeBooking_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://hermes-it.in/API/DomesticAir/GetSSRBeforeBookingStringFault" name="StringFault" message="tns:DomesticAir_GetSSRBeforeBooking_StringFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBookBlockedSeat">
+      <wsdl:input wsaw:Action="http://hermes-it.in/API/DomesticAir/GetBookBlockedSeat" message="tns:DomesticAir_GetBookBlockedSeat_InputMessage" />
+      <wsdl:output wsaw:Action="http://hermes-it.in/API/DomesticAir/GetBookBlockedSeatResponse" message="tns:DomesticAir_GetBookBlockedSeat_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://hermes-it.in/API/DomesticAir/GetBookBlockedSeatStringFault" name="StringFault" message="tns:DomesticAir_GetBookBlockedSeat_StringFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCancellationPenalty">
+      <wsdl:input wsaw:Action="http://hermes-it.in/API/DomesticAir/GetCancellationPenalty" message="tns:DomesticAir_GetCancellationPenalty_InputMessage" />
+      <wsdl:output wsaw:Action="http://hermes-it.in/API/DomesticAir/GetCancellationPenaltyResponse" message="tns:DomesticAir_GetCancellationPenalty_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://hermes-it.in/API/DomesticAir/GetCancellationPenaltyStringFault" name="StringFault" message="tns:DomesticAir_GetCancellationPenalty_StringFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDirectCancellation">
+      <wsdl:input wsaw:Action="http://hermes-it.in/API/DomesticAir/GetDirectCancellation" message="tns:DomesticAir_GetDirectCancellation_InputMessage" />
+      <wsdl:output wsaw:Action="http://hermes-it.in/API/DomesticAir/GetDirectCancellationResponse" message="tns:DomesticAir_GetDirectCancellation_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://hermes-it.in/API/DomesticAir/GetDirectCancellationStringFault" name="StringFault" message="tns:DomesticAir_GetDirectCancellation_StringFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRescheduleAvailability">
+      <wsdl:input wsaw:Action="http://hermes-it.in/API/DomesticAir/GetRescheduleAvailability" message="tns:DomesticAir_GetRescheduleAvailability_InputMessage" />
+      <wsdl:output wsaw:Action="http://hermes-it.in/API/DomesticAir/GetRescheduleAvailabilityResponse" message="tns:DomesticAir_GetRescheduleAvailability_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://hermes-it.in/API/DomesticAir/GetRescheduleAvailabilityStringFault" name="StringFault" message="tns:DomesticAir_GetRescheduleAvailability_StringFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRescheduleFareRule">
+      <wsdl:input wsaw:Action="http://hermes-it.in/API/DomesticAir/GetRescheduleFareRule" message="tns:DomesticAir_GetRescheduleFareRule_InputMessage" />
+      <wsdl:output wsaw:Action="http://hermes-it.in/API/DomesticAir/GetRescheduleFareRuleResponse" message="tns:DomesticAir_GetRescheduleFareRule_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://hermes-it.in/API/DomesticAir/GetRescheduleFareRuleStringFault" name="StringFault" message="tns:DomesticAir_GetRescheduleFareRule_StringFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReschedulePenalty">
+      <wsdl:input wsaw:Action="http://hermes-it.in/API/DomesticAir/GetReschedulePenalty" message="tns:DomesticAir_GetReschedulePenalty_InputMessage" />
+      <wsdl:output wsaw:Action="http://hermes-it.in/API/DomesticAir/GetReschedulePenaltyResponse" message="tns:DomesticAir_GetReschedulePenalty_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://hermes-it.in/API/DomesticAir/GetReschedulePenaltyStringFault" name="StringFault" message="tns:DomesticAir_GetReschedulePenalty_StringFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRescheduleBook">
+      <wsdl:input wsaw:Action="http://hermes-it.in/API/DomesticAir/GetRescheduleBook" message="tns:DomesticAir_GetRescheduleBook_InputMessage" />
+      <wsdl:output wsaw:Action="http://hermes-it.in/API/DomesticAir/GetRescheduleBookResponse" message="tns:DomesticAir_GetRescheduleBook_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://hermes-it.in/API/DomesticAir/GetRescheduleBookStringFault" name="StringFault" message="tns:DomesticAir_GetRescheduleBook_StringFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGUID">
+      <wsdl:input wsaw:Action="http://hermes-it.in/API/DomesticAir/GetGUID" message="tns:DomesticAir_GetGUID_InputMessage" />
+      <wsdl:output wsaw:Action="http://hermes-it.in/API/DomesticAir/GetGUIDResponse" message="tns:DomesticAir_GetGUID_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://hermes-it.in/API/DomesticAir/GetGUIDStringFault" name="StringFault" message="tns:DomesticAir_GetGUID_StringFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMongo">
+      <wsdl:input wsaw:Action="http://hermes-it.in/API/DomesticAir/GetMongo" message="tns:DomesticAir_GetMongo_InputMessage" />
+      <wsdl:output wsaw:Action="http://hermes-it.in/API/DomesticAir/GetMongoResponse" message="tns:DomesticAir_GetMongo_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://hermes-it.in/API/DomesticAir/GetMongoStringFault" name="StringFault" message="tns:DomesticAir_GetMongo_StringFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:service name="DomesticAir">
+    <wsdl:port name="BasicHttpBinding_DomesticAir" binding="i0:BasicHttpBinding_DomesticAir">
+      <soap:address location="http://115.248.39.80/HermesDomAir/DomesticAir.svc/soapService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
